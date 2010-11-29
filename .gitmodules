@@ -1,30 +1,3 @@
 [submodule bundle/snipmate"]
 	path = bundle/snipmate
 	url = git@github.com:garbas/snipmate.vim.git
-[submodule bundle/supertab"]
-	path = bundle/supertab
-	url = git://github.com/ervandew/supertab.git
-[submodule bundle/pyflakes"]
-	path = bundle/pyflakes
-	url = git@github.com:garbas/pyflakes-vim.git
-[submodule bundle/pep8"]
-	path = bundle/pep8
-	url = git://github.com/nvie/vim-pep8.git
-[submodule bundle/command-t"]
-	path = bundle/command-t
-	url = git://git.wincent.com/command-t.git
-[submodule bundle/NERDTree"]
-	path = bundle/NERDTree
-	url = git://github.com/scrooloose/nerdtree.git
-[submodule bundle/NERDCommenter"]
-	path = bundle/NERDCommenter
-	url = git://github.com/scrooloose/nerdcommenter.git
-[submodule bundle/ack"]
-	path = bundle/ack
-	url = git://github.com/mileszs/ack.vim.git
-[submodule bundle/fugitive"]
-	path = bundle/fugitive
-	url = git://github.com/tpope/vim-fugitive.git
-[submodule bundle/gist"]
-	path = bundle/gist
-	url = git://github.com/mattn/gist-vim.git
