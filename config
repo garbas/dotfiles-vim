@@ -1,0 +1,265 @@
+""
+"" Author: Rok Garbas, rok@garbas.si (Python.Zope.Plone consulting)
+"" Last Change:
+""
+""
+"" About
+"" =====
+""
+"" There is no global custumization of edtiors that would work for every
+"" developer. What we try to do here to collect useful plugins for VIM,
+"" install them, document them and configure them as best as I think is ok.
+""
+"" If you don't agree with my setting you can always override settings in
+"" ``$HOME/.vimrc.local``.
+""
+""
+"" Shorcuts
+"" ========
+""
+"" NORMAL MODE:
+""
+""  <leader>l       -- Toggle tabstop(▸) and linestop symobls (¬)
+""  <leader>n       -- Toggle line numbers
+""  <leader>s       -- Toggle spell checking
+""  <leader>h       -- Toggle for search highlight¬
+""  <leader>w       -- Strip trailing whitespaces from whole file
+""  <ctrl-shift-P>  -- Show highlight group
+""
+"" INSERT MODE:
+""
+""  >>              -- manual indent
+""  <<              -- manual unindent
+""
+""
+"" Potential plugins
+"" =================
+""
+"" plugins I'm still evaluating or just need to look at them closer
+""
+""  snipMate.vim    --
+""  gist.vim        -- https://github.com/mattn/gist-vim
+""
+""
+
+
+""
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" PATHOGEN
+""
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" GENERAL
+""
+set nomodeline  " FreeBSD security advisory for this one...
+set enc=utf-8  " set the default encoding
+set title  " set the title of the window
+set titlestring=%f%(\ [%M]%)¬
+set nocompatible  " This setting prevents vim from emulating the original vi's
+                  " bugs and limitations
+set showmatch  " This setting will cause the cursor to very briefly jump to a
+               " brace/parenthese/bracket's "match" whenever you type a closing or
+               " opening brace/parenthese/bracket.
+set showmode
+set showcmd  " Display an incomplete command in the lower right corner of the Vim window
+set history=1000  " have 1000 lines of command-line (etc) history
+set so=4  " Set a margin of lines when scrolling
+set statusline=\ \ \ \ \ line:%l\ column:%c\ \ \ %M%Y%r%=%-14.(%t%)\ %p%%
+                    " set a custom status line similar to that of ``:set ruler``
+set laststatus=2  " show the statusline in all window
+set equalalways  " set all window splits equal
+if has('mouse')
+    set mouse=a  " have the mouse enabled all the time
+    set mousemodel=popup " make a menu popup on right click
+endif
+set hidden  " allow for switching buffers when a file has changes
+set t_vb=  " make sure the bell shuts up
+set pastetoggle=<F2>
+set wildmenu
+set wildmode=list:longest
+set backspace=indent,eol,start
+"set ttyfast
+noremap ; :
+filetype on
+filetype plugin on
+" The last two lines make the tab key match bracket pairs. I use this to move
+" around all the time and <tab> is a hell of a lot easier to type than %.
+nnoremap <TAB> %
+vnoremap <TAB> %
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" LEADER KEY
+""
+let mapleader = ","
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" BACKUP / SWAP FILES (HIDE THEM)
+""
+set backupdir=~/.vim/backup,.,/tmp¬
+set directory=~/.vim/backup/swap,.,/tmp¬
+set backupskip=/tmp/*,/private/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*¬
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" (AUTO)INDENT
+"" - >>, << TextMate’s key mappings for manual indentation
+filetype plugin indent on  " enables filetype specific plugins
+set autoindent
+"set smartindent
+nmap <D-[> <<
+nmap <D-]> >>
+vmap <D-[> <gv
+vmap <D-]> >gv
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" TABS / SPACES
+""
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" FOLDING
+""
+set foldmethod=indent
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" WRAPPING TEXT
+""
+set wrap
+set textwidth=79
+set formatoptions=qrnl
+nnoremap <LEADER>w gqip
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" COLORS / THEME
+"" - show syntax highlighting groups for word under cursor
+""
+syntax on  " turn on syntax highlighting¬
+color wombat  " select wombat theme
+let python_highlight_all=1  " highlight all python syntax¬
+nmap <C-S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+    if !exists("*synstack")
+        return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val,"name")')
+endfunc
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" VISUAL ELEMENTS
+""
+set number  " turn on line numbers¬
+map <silent> <leader>n :set number!<CR>  " shortcut to turn off line numbers¬
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" TABSTOP AND LINESTOP SYMBOLS
+""  - Use the same symbols as TextMate for tabstops and EOLs
+""
+nmap <leader>l :set list!<CR>
+set listchars=tab:▸\ ,eol:¬
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" SEARCH
+""
+nnoremap / /\v
+vnoremap / /\v
+set incsearch  " find as you type
+set gdefault
+set hlsearch  " highlight the terms
+set ignorecase  " make searches case-insensitive
+set smartcase  " unless they contain upper-case letters
+map <silent> <leader>h :set hlsearch!<CR>¬
+map <LEADER>a :Ack<SPACE>
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" SPELLCHECK
+""  - no spellcheck by default
+""
+map <silent> <leader>s :set spell!<CR>
+set nospell
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" STRIP TRAILING WHITESPACES
+""
+function! Preserve(command)
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    execute a:command
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+nmap <leader>w :call Preserve("%s/\\s\\+$//e")<CR>
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" WINDOWS
+""
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" NERDTree
+""
+map <LEADER>x :NERDTreeToggle<CR>
+map <LEADER>b :NERDTreeFromBookmark<SPACE>
+nnoremap <silent> <leader>f :NERDTreeFind<CR>
+let NERDTreeIgnore=[
+    \'\~$',
+    \'\.pt.cache$',
+    \'\.Python$',
+    \'\.svn$',
+    \'\.git*$',
+    \'\.pyc$',
+    \'\.pyo$',
+    \'\.mo$',
+    \'\.o$',
+    \'\.lo$',
+    \'\.la$',
+    \'\..*.rej$',
+    \'\.rej$',
+    \'\.\~lock.*#$',
+    \'\.DS_Store$']
+let NERDTreeSortOrder=[]  " set the sort order to alphabetical
+let NERDTreeChDirMode=2  " when the root is changed, change Vim's working dir
+let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
+
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" ROPEVIM
+""  - http://rope.sourceforge.net/ropevim.html
+""  - http://bitbucket.org/agr/ropevim/src/tip/README.txt
+""
+"let $PYTHONPATH .= ":".$HOME."/.vim/src/rope/build/lib.linux-x86_64-2.6"
+"let $PYTHONPATH .= ":".$HOME."/.vim/src/ropemode/build/lib.linux-x86_64-2.6"
+"let $PYTHONPATH .= ":".$HOME."/.vim/src/ropevim/build/lib.linux-x86_64-2.6"
+"source $HOME/.vim/src/ropevim/ropevim.vim
+"let ropevim_codeassist_maxfixes=10
+"let ropevim_guess_project=1
+"let ropevim_vim_completion=1
+"let ropevim_enable_autoimport=1
+"let ropevim_extended_complete=1
