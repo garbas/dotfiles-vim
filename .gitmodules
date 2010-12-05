@@ -10,12 +10,6 @@
 [submodule "bundle/gist"]
     path = bundle/gist
     url = git://github.commandom/mattn/gist-vim.git
-[submodule "bundle/NERDCommenter"]
-    path = bundle/NERDCommenter
-    url = git://github.com/scrooloose/nerdcommenter.git
-[submodule "bundle/NERDTree"]
-    path = bundle/NERDTree
-    url = git://github.com/scrooloose/nerdtree.git
 [submodule "bundle/pep8"]
     path = bundle/pep8
     url = git://githubit.com/nvie/vim-pep8.git
