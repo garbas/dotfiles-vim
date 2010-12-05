@@ -28,3 +28,6 @@
 [submodule "bundle/supertab"]
     path = bundle/supertab
     url = git://github.com/ervandew/supertab.git
+[submodule "bundle/lusty"]
+	path = bundle/lusty
+	url = git://github.com/sjbach/lusty.git
