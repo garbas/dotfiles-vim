@@ -9,16 +9,16 @@
     url = git://github.com/tpope/vim-fugitive.git
 [submodule "bundle/gist"]
     path = bundle/gist
-    url = git://github.commandom/mattn/gist-vim.git
+    url = git://github.com/mattn/gist-vim.git
 [submodule "bundle/pep8"]
     path = bundle/pep8
-    url = git://githubit.com/nvie/vim-pep8.git
+    url = git://github.com/nvie/vim-pep8.git
 [submodule "bundle/pyflakes"]
     path = bundle/pyflakes
     url = git://github.com/kevinw/pyflakes-vim.git
 [submodule "bundle/snipmate"]
     path = bundle/snipmate
-    url = git@github.com:garbas/snipmate.vim.git
+    url = git://github.com/garbas/snipmate.vim.gitx
 [submodule "bundle/supertab"]
     path = bundle/supertab
     url = git://github.com/ervandew/supertab.git
