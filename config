@@ -139,7 +139,7 @@ nnoremap <LEADER>w gqip
 ""
 syntax on  " turn on syntax highlighting¬
 color wombat  " select wombat theme
-let python_highlight_all=1  " highlight all python syntax¬
+let python_highlight_all=1  " highlight all python syntax
 nmap <C-S-P> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
     if !exists("*synstack")
@@ -204,53 +204,19 @@ nmap <leader>w :call Preserve("%s/\\s\\+$//e")<CR>
 
 ""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" WINDOWS
+"" WINDOWS / BUFFERS
 ""
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" NERDTree
-""
-map <LEADER>x :NERDTreeToggle<CR>
-map <LEADER>b :NERDTreeFromBookmark<SPACE>
-nnoremap <silent> <leader>f :NERDTreeFind<CR>
-let NERDTreeIgnore=[
-    \'\~$',
-    \'\.pt.cache$',
-    \'\.Python$',
-    \'\.svn$',
-    \'\.git*$',
-    \'\.pyc$',
-    \'\.pyo$',
-    \'\.mo$',
-    \'\.o$',
-    \'\.lo$',
-    \'\.la$',
-    \'\..*.rej$',
-    \'\.rej$',
-    \'\.\~lock.*#$',
-    \'\.DS_Store$']
-let NERDTreeSortOrder=[]  " set the sort order to alphabetical
-let NERDTreeChDirMode=2  " when the root is changed, change Vim's working dir
-let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
-
-
-""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" ROPEVIM
-""  - http://rope.sourceforge.net/ropevim.html
-""  - http://bitbucket.org/agr/ropevim/src/tip/README.txt
-""
-"let $PYTHONPATH .= ":".$HOME."/.vim/src/rope/build/lib.linux-x86_64-2.6"
-"let $PYTHONPATH .= ":".$HOME."/.vim/src/ropemode/build/lib.linux-x86_64-2.6"
-"let $PYTHONPATH .= ":".$HOME."/.vim/src/ropevim/build/lib.linux-x86_64-2.6"
-"source $HOME/.vim/src/ropevim/ropevim.vim
-"let ropevim_codeassist_maxfixes=10
-"let ropevim_guess_project=1
-"let ropevim_vim_completion=1
-"let ropevim_enable_autoimport=1
-"let ropevim_extended_complete=1
+" RopeVim
+" http://rope.sourceforge.net/ropevim.html
+" Refactoring engine using python-rope
+"source /usr/local/ropevim.vim
+let ropevim_codeassist_maxfixes=10
+let ropevim_vim_completion=1
+let ropevim_guess_project=1
+let ropevim_enable_autoimport=1
+let ropevim_extended_complete=1
