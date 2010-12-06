@@ -210,3 +210,15 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+nmap <silent> b :LustyJuggler<CR>
+nmap <silent> B :LustyJugglePrevious<CR>
+let g:LustyJugglerAltTabMode = 1
+set wildignore+=*.o,*.obj,*.pyc,*.pyo
+set wildignore+=.git,.svn,.hg
+set wildignore+=bin,develop-eggs,eggs,*egg-info/**,include,lib,parts,var
+
+nmap <silent> <Leader>X :LustyFilesystemExplorer<CR>
+nmap <silent> <Leader>x :LustyFilesystemExplorerFromHere<CR>
+nmap <silent> <Leader>b :LustyBufferExplorer<CR>
+nmap <silent> <Leader>B :LustyBufferGrep<CR>
