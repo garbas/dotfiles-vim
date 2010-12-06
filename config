@@ -210,13 +210,3 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-" RopeVim
-" http://rope.sourceforge.net/ropevim.html
-" Refactoring engine using python-rope
-"source /usr/local/ropevim.vim
-let ropevim_codeassist_maxfixes=10
-let ropevim_vim_completion=1
-let ropevim_guess_project=1
-let ropevim_enable_autoimport=1
-let ropevim_extended_complete=1
