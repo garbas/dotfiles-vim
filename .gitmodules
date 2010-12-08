@@ -18,7 +18,7 @@
     url = git://github.com/kevinw/pyflakes-vim.git
 [submodule "bundle/snipmate"]
     path = bundle/snipmate
-    url = git://github.com/garbas/snipmate.vim.gitx
+    url = git://github.com/garbas/snipmate.vim.git
 [submodule "bundle/supertab"]
     path = bundle/supertab
     url = git://github.com/ervandew/supertab.git
