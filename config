@@ -222,3 +222,5 @@ nmap <silent> <Leader>X :LustyFilesystemExplorer<CR>
 nmap <silent> <Leader>x :LustyFilesystemExplorerFromHere<CR>
 nmap <silent> <Leader>b :LustyBufferExplorer<CR>
 nmap <silent> <Leader>B :LustyBufferGrep<CR>
+
+let $PYTHONPATH .= ":".$HOME."/.vim/src/pyflakes"

@@ -25,3 +25,6 @@
 [submodule "bundle/lusty"]
 	path = bundle/lusty
 	url = git://github.com/sjbach/lusty.git
+[submodule "src/pyflakes"]
+	path = src/pyflakes
+	url = git://github.com/kevinw/pyflakes.git
