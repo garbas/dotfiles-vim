@@ -1,6 +1,6 @@
 ""
-"" Author: Rok Garbas, rok@garbas.si (Python.Zope.Plone consulting)
-"" Last Change:
+"" Author: Rok Garbas, rok@garbas.si, http://www.garbas.si
+"" Last Change: 2011 Jan 06
 ""
 ""
 "" About
@@ -75,6 +75,7 @@ set wildmode=list:longest
 set backspace=indent,eol,start
 "set ttyfast
 noremap ; :
+inoremap jj <ESC>
 filetype on
 filetype plugin on
 " The last two lines make the tab key match bracket pairs. I use this to move
@@ -129,6 +130,8 @@ set foldmethod=indent
 ""
 set wrap
 set textwidth=79
+set colorcolumn=80
+match ErrorMsg '\%>80v.+'
 set formatoptions=qrnl
 nnoremap <LEADER>w gqip
 
@@ -160,8 +163,9 @@ map <silent> <leader>n :set number!<CR>  " shortcut to turn off line numbers¬
 "" TABSTOP AND LINESTOP SYMBOLS
 ""  - Use the same symbols as TextMate for tabstops and EOLs
 ""
-nmap <leader>l :set list!<CR>
+set list
 set listchars=tab:▸\ ,eol:¬
+nmap <leader>l :set list!<CR>
 
 ""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -211,12 +215,13 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-nmap <silent> b :LustyJuggler<CR>
-nmap <silent> B :LustyJugglePrevious<CR>
+""nmap <silent> b :LustyJuggler<CR>
+""nmap <silent> B :LustyJugglePrevious<CR>
 let g:LustyJugglerAltTabMode = 1
-set wildignore+=*.o,*.obj,*.pyc,*.pyo
+set wildignore+=*.o,*.obj
+set wildignore+=*.pyc,*.pyo
 set wildignore+=.git,.svn,.hg
-set wildignore+=bin,develop-eggs,eggs,*egg-info/**,include,lib,parts,var
+""set wildignore+=bin,develop-eggs,eggs,*egg-info/**,include,lib,parts,var
 
 nmap <silent> <Leader>X :LustyFilesystemExplorer<CR>
 nmap <silent> <Leader>x :LustyFilesystemExplorerFromHere<CR>
