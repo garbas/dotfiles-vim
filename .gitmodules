@@ -28,3 +28,6 @@
 [submodule "src/pyflakes"]
 	path = src/pyflakes
 	url = git://github.com/kevinw/pyflakes.git
+[submodule "bundle/javascript"]
+	path = bundle/javascript
+	url = git://github.com/pangloss/vim-javascript.git
