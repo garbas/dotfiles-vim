@@ -31,3 +31,6 @@
 [submodule "bundle/javascript"]
 	path = bundle/javascript
 	url = git://github.com/pangloss/vim-javascript.git
+[submodule "bundle/showmarks"]
+	path = bundle/showmarks
+	url = git@github.com:garbas/vim-showmarks.git
