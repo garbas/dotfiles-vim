@@ -1,0 +1,3 @@
+source $HOME/.vim/config
+ab pdbs import pdb; pdb.set_trace()
+ab pdbpp import pdbpp; pdbpp.set_trace()
