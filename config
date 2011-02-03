@@ -232,6 +232,7 @@ nmap <silent> <Leader>B :LustyBufferGrep<CR>
 
 
 "" pyflakes
-let $PYTHONPATH .= ":".$HOME."/.vim/src/pyflakes"
+let $PYTHONPATH = $HOME."/.vim/src/pyflakes:".$HOME."/.vim/src/pep8:".$PYTHONPATH
+let $PATH = $HOME."/.vim/bin/:".$PATH
 
 "" vim:ft=vim
