@@ -37,3 +37,9 @@
 [submodule "bundle/jslint"]
 	path = bundle/jslint
 	url = git://github.com/hallettj/jslint.vim.git
+[submodule "bundle/jquery-tmpl"]
+	path = bundle/jquery-tmpl
+	url = git@github.com:garbas/vim-jquery-tmpl.git
+[submodule "bundle/jquery"]
+	path = bundle/jquery
+	url = git@github.com:garbas/vim-jquery.git

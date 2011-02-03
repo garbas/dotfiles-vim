@@ -230,4 +230,12 @@ nmap <silent> <Leader>x :LustyFilesystemExplorerFromHere<CR>
 nmap <silent> <Leader>b :LustyBufferExplorer<CR>
 nmap <silent> <Leader>B :LustyBufferGrep<CR>
 
+"" jquery
+au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+
+"" jquery-tmpl
+autocmd BufRead,BufNewFile *.html set filetype=html syntax=jquerytmpl
+autocmd BufRead,BufNewFile *.jquery.tmpl set filetype=html syntax=jquerytmpl
+
+"" pyflakes
 let $PYTHONPATH .= ":".$HOME."/.vim/src/pyflakes"
