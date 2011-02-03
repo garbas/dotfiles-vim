@@ -1,60 +1,21 @@
-""
-"" Author: Rok Garbas, rok@garbas.si, http://www.garbas.si
-"" Last Change: 2011 Jan 06
-""
-""
-"" About
-"" =====
-""
-"" There is no global custumization of edtiors that would work for every
-"" developer. What we try to do here to collect useful plugins for VIM,
-"" install them, document them and configure them as best as I think is ok.
-""
-"" If you don't agree with my setting you can always override settings in
-"" ``$HOME/.vimrc.local``.
-""
-""
-"" Shorcuts
-"" ========
-""
-"" NORMAL MODE:
-""
-""  <leader>l       -- Toggle tabstop(▸) and linestop symobls (¬)
 ""  <leader>n       -- Toggle line numbers
 ""  <leader>s       -- Toggle spell checking
 ""  <leader>h       -- Toggle for search highlight¬
 ""  <leader>w       -- Strip trailing whitespaces from whole file
 ""  <ctrl-shift-P>  -- Show highlight group
-""
-"" INSERT MODE:
-""
-""  >>              -- manual indent
-""  <<              -- manual unindent
-""
-""
 
-
-""
-""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" PATHOGEN
-""
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" GENERAL
-""
+"" GENERAL - I think we can all agree this would be nice default
+let mapleader = ","
 set nomodeline  " FreeBSD security advisory for this one...
 set enc=utf-8  " set the default encoding
 set title  " set the title of the window
 set titlestring=%f%(\ [%M]%)¬
 set nocompatible  " This setting prevents vim from emulating the original vi's
                   " bugs and limitations
-set showmatch  " This setting will cause the cursor to very briefly jump to a
-               " brace/parenthese/bracket's "match" whenever you type a closing or
-               " opening brace/parenthese/bracket.
 set showmode
 set showcmd  " Display an incomplete command in the lower right corner of the Vim window
 set history=1000  " have 1000 lines of command-line (etc) history
@@ -73,89 +34,42 @@ set pastetoggle=<F2>
 set wildmenu
 set wildmode=list:longest
 set backspace=indent,eol,start
-"set ttyfast
-noremap ; :
-inoremap jj <ESC>
+set autoindent
+
+"" turn on syntax highlighting¬
+syntax on
+
+"" enables filetype specific plugins
 filetype on
 filetype plugin on
-" The last two lines make the tab key match bracket pairs. I use this to move
-" around all the time and <tab> is a hell of a lot easier to type than %.
-nnoremap <TAB> %
-vnoremap <TAB> %
+filetype plugin indent on
 
-""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" LEADER KEY
-""
-let mapleader = ","
 
-""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" BACKUP / SWAP FILES (HIDE THEM)
-""
 set backupdir=~/.vim/backup,.,/tmp¬
 set directory=~/.vim/backup/swap,.,/tmp¬
 set backupskip=/tmp/*,/private/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*¬
 
-""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" (AUTO)INDENT
-"" - >>, << TextMate’s key mappings for manual indentation
-filetype plugin indent on  " enables filetype specific plugins
-set autoindent
-"set smartindent
-nmap <D-[> <<
-nmap <D-]> >>
-vmap <D-[> <gv
-vmap <D-]> >gv
-
-""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" TABS / SPACES
-""
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" FOLDING
-""
 set foldmethod=indent
 
-""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" WRAPPING TEXT
-""
 set wrap
 set textwidth=79
 set colorcolumn=80
 match ErrorMsg '\%>80v.+'
 set formatoptions=qrnl
-nnoremap <LEADER>w gqip
 
-""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" COLORS / THEME
-"" - show syntax highlighting groups for word under cursor
-""
-syntax on  " turn on syntax highlighting¬
-"color wombat  " select wombat theme
-"color peaksea
+"" theme: this will always be a subject of debate so i suggest we dont debate
+"" since anybody can select its own theme, but we need some nice default
 color ir_black
-let python_highlight_all=1  " highlight all python syntax
-nmap <C-S-P> :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-    if !exists("*synstack")
-        return
-    endif
-    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val,"name")')
-endfunc
 
-""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" VISUAL ELEMENTS
+"" highlight all python syntax
+let python_highlight_all=1
+
 ""
 set number  " turn on line numbers¬
 map <silent> <leader>n :set number!<CR>  " shortcut to turn off line numbers¬
@@ -163,10 +77,9 @@ map <silent> <leader>n :set number!<CR>  " shortcut to turn off line numbers¬
 ""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" TABSTOP AND LINESTOP SYMBOLS
-""  - Use the same symbols as TextMate for tabstops and EOLs
+""  <leader>l       -- Toggle tabstop(▸) and linestop symobls (¬)
 ""
 set list
-set listchars=tab:▸\ ,eol:¬
 nmap <leader>l :set list!<CR>
 
 ""
@@ -210,12 +123,6 @@ nmap <leader>w :call Preserve("%s/\\s\\+$//e")<CR>
 
 ""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" WINDOWS / BUFFERS
-""
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 
 ""nmap <silent> b :LustyJuggler<CR>
 ""nmap <silent> B :LustyJugglePrevious<CR>

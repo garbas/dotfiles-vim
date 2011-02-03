@@ -1,3 +1,14 @@
 source $HOME/.vim/config
+source $HOME/.vim/config-textmate-like
+source $HOME/.vim/config-vimexpert
+
+"" This setting will cause the cursor to very briefly jump to a
+"" brace/parenthese/bracket's "match" whenever you type a closing or
+"" opening brace/parenthese/bracket.
+set showmatch
+
+"set ttyfast
+
+nnoremap <LEADER>w gqip
 
 "" vim:ft=vim

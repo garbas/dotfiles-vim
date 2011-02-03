@@ -52,3 +52,9 @@
 [submodule "bundle/web-indent"]
 	path = bundle/web-indent
 	url = git://github.com/garbas/vim-web-indent.git
+[submodule "bundle/vim-addon-mw-utils"]
+	path = bundle/vim-addon-mw-utils
+	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "bundle/tlib"]
+	path = bundle/tlib
+	url = git://github.com/tomtom/tlib_vim.git

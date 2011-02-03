@@ -1,0 +1,25 @@
+
+" The last two lines make the tab key match bracket pairs. I use this to move
+" around all the time and <tab> is a hell of a lot easier to type than %.
+nnoremap <TAB> %
+vnoremap <TAB> %
+
+
+"" - >>, << TextMate’s key mappings for manual indentation
+""  >>              -- manual indent
+""  <<              -- manual unindent
+nmap <D-[> <<
+nmap <D-]> >>
+vmap <D-[> <gv
+vmap <D-]> >gv
+
+"" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+
+"" WINDOWS / BUFFERS
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+"" vim:ft=vim
