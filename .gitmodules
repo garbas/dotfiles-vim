@@ -43,3 +43,9 @@
 [submodule "bundle/jquery"]
 	path = bundle/jquery
 	url = git@github.com:garbas/vim-jquery.git
+[submodule "bundle/lesscss"]
+	path = bundle/lesscss
+	url = git://github.com/itspriddle/vim-lesscss.git
+[submodule "bundle/javascript-indent"]
+	path = bundle/javascript-indent
+	url = git://github.com/itspriddle/vim-javascript-indent.git
