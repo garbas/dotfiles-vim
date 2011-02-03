@@ -18,7 +18,7 @@
     url = git://github.com/kevinw/pyflakes-vim.git
 [submodule "bundle/snipmate"]
     path = bundle/snipmate
-    url = git://github.com/garbas/snipmate.vim.git
+    url = git://github.com/garbas/vim-snipmate.git
 [submodule "bundle/supertab"]
     path = bundle/supertab
     url = git://github.com/ervandew/supertab.git
@@ -33,16 +33,16 @@
 	url = git://github.com/pangloss/vim-javascript.git
 [submodule "bundle/showmarks"]
 	path = bundle/showmarks
-	url = git@github.com:garbas/vim-showmarks.git
+	url = git://github.com/garbas/vim-showmarks.git
 [submodule "bundle/jslint"]
 	path = bundle/jslint
 	url = git://github.com/hallettj/jslint.vim.git
 [submodule "bundle/jquery-tmpl"]
 	path = bundle/jquery-tmpl
-	url = git@github.com:garbas/vim-jquery-tmpl.git
+	url = git://github.com/garbas/vim-jquery-tmpl.git
 [submodule "bundle/jquery"]
 	path = bundle/jquery
-	url = git@github.com:garbas/vim-jquery.git
+	url = git://github.com/garbas/vim-jquery.git
 [submodule "bundle/lesscss"]
 	path = bundle/lesscss
 	url = git://github.com/itspriddle/vim-lesscss.git
