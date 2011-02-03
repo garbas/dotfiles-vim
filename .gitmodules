@@ -49,3 +49,6 @@
 [submodule "src/pep8"]
 	path = src/pep8
 	url = git://github.com/jcrocholl/pep8.git
+[submodule "bundle/web-indent"]
+	path = bundle/web-indent
+	url = git://github.com/garbas/vim-web-indent.git
