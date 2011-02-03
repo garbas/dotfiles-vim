@@ -151,7 +151,6 @@ nmap <silent> <leader>B :LustyBufferGrep<CR>
 ""r : Readonly
 let g:showmarks_ignore_type="hmpr"
 
-let $PYTHONPATH = $HOME."/.vim/src/pysmell:".$PYTHONPATH
 let $PYTHONPATH = $HOME."/.vim/src/pyflakes:".$PYTHONPATH
 let $PYTHONPATH = $HOME."/.vim/src/pep8:".$PYTHONPATH
 let $PATH = $HOME."/.vim/bin/:".$PATH
