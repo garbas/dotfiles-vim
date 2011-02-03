@@ -193,7 +193,7 @@ set nospell
 
 ""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" STRIP TRAILING WHITESPACES
+"" STRIP TRAILING WHITESPACE
 ""
 function! Preserve(command)
     " Preparation: save last search, and cursor position.
@@ -225,13 +225,20 @@ set wildignore+=*.pyc,*.pyo
 set wildignore+=.git,.svn,.hg
 ""set wildignore+=bin,develop-eggs,eggs,*egg-info/**,include,lib,parts,var
 
-nmap <silent> <Leader>X :LustyFilesystemExplorer<CR>
-nmap <silent> <Leader>x :LustyFilesystemExplorerFromHere<CR>
-nmap <silent> <Leader>b :LustyBufferExplorer<CR>
-nmap <silent> <Leader>B :LustyBufferGrep<CR>
+nmap <silent> <leader>T :CommandTFlush<CR>
+nmap <silent> <leader>X :LustyFilesystemExplorer<CR>
+nmap <silent> <leader>x :LustyFilesystemExplorerFromHere<CR>
+nmap <silent> <leader>b :LustyBufferExplorer<CR>
+nmap <silent> <leader>B :LustyBufferGrep<CR>
 
+"" Showmarks ignoring type of windows
+""h : Help
+""m : Non-modifiable
+""p : Preview
+""q : Quickfix
+""r : Readonly
+let g:showmarks_ignore_type="hmpr"
 
-"" pyflakes
 let $PYTHONPATH = $HOME."/.vim/src/pyflakes:".$HOME."/.vim/src/pep8:".$PYTHONPATH
 let $PATH = $HOME."/.vim/bin/:".$PATH
 
