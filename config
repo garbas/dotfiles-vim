@@ -141,7 +141,9 @@ nnoremap <LEADER>w gqip
 "" - show syntax highlighting groups for word under cursor
 ""
 syntax on  " turn on syntax highlighting¬
-color wombat  " select wombat theme
+"color wombat  " select wombat theme
+"color peaksea
+color ir_black
 let python_highlight_all=1  " highlight all python syntax
 nmap <C-S-P> :call <SID>SynStack()<CR>
 function! <SID>SynStack()

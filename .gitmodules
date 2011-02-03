@@ -34,3 +34,6 @@
 [submodule "bundle/showmarks"]
 	path = bundle/showmarks
 	url = git@github.com:garbas/vim-showmarks.git
+[submodule "bundle/jslint"]
+	path = bundle/jslint
+	url = git://github.com/hallettj/jslint.vim.git
