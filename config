@@ -22,6 +22,7 @@ set history=1000  " have 1000 lines of command-line (etc) history
 set so=4  " Set a margin of lines when scrolling
 set statusline=\ \ \ \ \ line:%l\ column:%c\ \ \ %M%Y%r%=%-14.(%t%)\ %p%%
                     " set a custom status line similar to that of ``:set ruler``
+set completeopt+=longest,menuone
 set laststatus=2  " show the statusline in all window
 set equalalways  " set all window splits equal
 if has('mouse')
@@ -123,7 +124,11 @@ nmap <leader>w :call Preserve("%s/\\s\\+$//e")<CR>
 
 ""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+"" http://vim.wikia.com/wiki/VimTip1486
+"" You may also try the context value, which lets SuperTab decide which
+"" completion mode to use and should play well with OmniCompletion: 
+let g:SuperTabDefaultCompletionType = "context"
+imap <S-TAB> <C-X><C-O>
 ""nmap <silent> b :LustyJuggler<CR>
 ""nmap <silent> B :LustyJugglePrevious<CR>
 let g:LustyJugglerAltTabMode = 1
@@ -146,7 +151,9 @@ nmap <silent> <leader>B :LustyBufferGrep<CR>
 ""r : Readonly
 let g:showmarks_ignore_type="hmpr"
 
-let $PYTHONPATH = $HOME."/.vim/src/pyflakes:".$HOME."/.vim/src/pep8:".$PYTHONPATH
+let $PYTHONPATH = $HOME."/.vim/src/pysmell:".$PYTHONPATH
+let $PYTHONPATH = $HOME."/.vim/src/pyflakes:".$PYTHONPATH
+let $PYTHONPATH = $HOME."/.vim/src/pep8:".$PYTHONPATH
 let $PATH = $HOME."/.vim/bin/:".$PATH
 
 "" vim:ft=vim
