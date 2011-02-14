@@ -1,14 +1,27 @@
-source $HOME/.vim/config
+source $HOME/.vim/config-common
 source $HOME/.vim/config-textmate-like
 source $HOME/.vim/config-vimexpert
+
+source $HOME/.vim/config-vam
+call ActivateAddons(['ack','Command-T','fugitive','pep83160','pyflakes2441','snipMate','supertab','showmarks','jslint','jQuery',])
+
+"Gist
+"LustyExplorer
+"LustyJuggler
+"javascript
+"jquery-tmpl
 
 "" This setting will cause the cursor to very briefly jump to a
 "" brace/parenthese/bracket's "match" whenever you type a closing or
 "" opening brace/parenthese/bracket.
 set showmatch
 
-"set ttyfast
+set ttyfast
 
+"" my way to wrap text
 nnoremap <LEADER>w gqip
+
+colorscheme peaksea
+set background=dark
 
 "" vim:ft=vim

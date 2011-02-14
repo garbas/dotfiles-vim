@@ -1,13 +1,3 @@
-""  <leader>n       -- Toggle line numbers
-""  <leader>s       -- Toggle spell checking
-""  <leader>h       -- Toggle for search highlight¬
-""  <leader>w       -- Strip trailing whitespaces from whole file
-""  <ctrl-shift-P>  -- Show highlight group
-
-"" PATHOGEN
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-
 "" GENERAL - I think we can all agree this would be nice default
 let mapleader = ","
 set nomodeline  " FreeBSD security advisory for this one...
@@ -65,10 +55,6 @@ if version >= 730
 endif
 match ErrorMsg '\%>80v.+'
 set formatoptions=qrnl
-
-"" theme: this will always be a subject of debate so i suggest we dont debate
-"" since anybody can select its own theme, but we need some nice default
-color ir_black
 
 "" highlight all python syntax
 let python_highlight_all=1

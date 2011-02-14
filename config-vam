@@ -1,0 +1,12 @@
+set runtimepath+=~/.vim/addons/vim-addon-manager
+fun ActivateAddons(addons)
+  try
+    call scriptmanager#Activate(a:addons)
+  catch /.*/
+    echoe v:exception
+  endtry
+endf
+" experimental: run after gui has been started [3]
+" option1: au VimEnter * call Activate()
+" option2: au GUIEnter * call Activate()
+" See BUGS sections below [*]
