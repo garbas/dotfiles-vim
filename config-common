@@ -115,8 +115,8 @@ nmap <leader>w :call Preserve("%s/\\s\\+$//e")<CR>
 "" http://vim.wikia.com/wiki/VimTip1486
 "" You may also try the context value, which lets SuperTab decide which
 "" completion mode to use and should play well with OmniCompletion: 
-let g:SuperTabDefaultCompletionType = "context"
-imap <S-TAB> <C-X><C-O>
+"let g:SuperTabDefaultCompletionType = "context"
+"imap <S-TAB> <C-X><C-O>
 ""nmap <silent> b :LustyJuggler<CR>
 ""nmap <silent> B :LustyJugglePrevious<CR>
 let g:LustyJugglerAltTabMode = 1
