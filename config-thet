@@ -1,10 +1,12 @@
 source $HOME/.vim/config-common
 source $HOME/.vim/config-textmate-like
-source $HOME/.vim/config-vimexpert
 
 source $HOME/.vim/config-vam
-call ActivateAddons(['ack','Command-T','fugitive','pep83160','pyflakes2441','snipMate','supertab','showmarks','jslint','jQuery','lusty', 'nerdtree', 'TabBar', 'taglist', 'tasklist'])
+call ActivateAddons(['ack','Command-T','fugitive','pep83160','pyflakes2441','snipMate','supertab','showmarks','jslint','jQuery','lusty', 'The_NERD_tree', 'TabBar', 'taglist', 'TaskList'])
 
+colorscheme wombat
+
+"" FROM GARBAS
 "Gist
 "LustyExplorer
 "LustyJuggler
@@ -15,14 +17,12 @@ call ActivateAddons(['ack','Command-T','fugitive','pep83160','pyflakes2441','sni
 "" brace/parenthese/bracket's "match" whenever you type a closing or
 "" opening brace/parenthese/bracket.
 set showmatch
-
 set ttyfast
-
 "" my way to wrap text
 nnoremap <LEADER>w gqip
 
-colorscheme wombat
 
+"" THET
 "" next/previous buffer
 nmap <silent> <C-left> :bprev<CR> 
 nmap <silent> <C-right> :bnext<CR>
