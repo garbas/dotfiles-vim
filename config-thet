@@ -23,6 +23,14 @@ nnoremap <LEADER>w gqip
 
 
 "" THET
+
+set foldlevelstart=20 "set foldlevel higher so opened buffers arent folded
+"" open/close all folds
+nmap z7 zR
+nmap z8 zM
+nmap z9 zo
+nmap z0 zc
+
 "" next/previous buffer
 nmap <silent> <C-left> :bprev<CR> 
 nmap <silent> <C-right> :bnext<CR>
@@ -42,10 +50,6 @@ nmap <F11> :TaskList<CR>
 
 "" quit fast
 "nmap :qq<CR> :qall<CR>
-
-"" open/close all folds
-"nmap <Leader>1 zM 
-"nmap <Leader>2 zR 
 
 "" NERDTree
 noremap <silent> <f9> :NERDTreeToggle<CR>
