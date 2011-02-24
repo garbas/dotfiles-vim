@@ -19,7 +19,7 @@ Initial install of `.vim` folder
 
     cd ~
     git clone git@github.com:garbas/dotfile-vim.git .vim
-    ln -s .vim/config .vimrc
+    ln -s .vim/config-XYZ .vimrc
     cd .vim
     git submodule update --init
 
