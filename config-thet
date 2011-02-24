@@ -43,6 +43,9 @@ nmap <C-a> ggVG
 map <C-S-Y> "+yy
 map <C-S-P> "+P
 
+"" delete into blackhole register, so that other aren't overwritten
+map <Del> "_d
+
 "" TagList
 nmap <f10> :TlistToggle<CR>
 "" TaskList
