@@ -2,16 +2,11 @@ source $HOME/.vim/config-common
 source $HOME/.vim/config-textmate-like
 
 source $HOME/.vim/config-vam
-call ActivateAddons(['ack','Command-T','fugitive','pep83160','pyflakes2441','snipMate','supertab','showmarks','jslint','jQuery','lusty', 'The_NERD_tree', 'TabBar', 'taglist', 'TaskList'])
+""let s:scm_plugin_sources['vim-pep8'] = { 'type' : 'git', 'url' : 'git://github.com/nvie/vim-pep8.git' }
+""let s:scm_plugin_sources['vim-pyflakes'] = { 'type' : 'git', 'url' : 'git://github.com/kevinw/pyflakes-vim.git' }
+call ActivateAddons(['ack','fugitive','pep83160','pyflakes2441','snipMate','supertab','showmarks','jslint','jQuery','lusty','The_NERD_tree','TabBar','taglist','TaskList'])
 
 colorscheme wombat
-
-"" FROM GARBAS
-"Gist
-"LustyExplorer
-"LustyJuggler
-"javascript
-"jquery-tmpl
 
 "" This setting will cause the cursor to very briefly jump to a
 "" brace/parenthese/bracket's "match" whenever you type a closing or
@@ -24,6 +19,15 @@ nnoremap <LEADER>w gqip
 
 "" THET
 
+"" allow dot to enter command mode from normal mode
+noremap . :
+"" allow ctrl-enter to generate escape key sequence
+inoremap <C-BS> <Esc>
+nmap ä i
+
+"" bufstop for xml based files
+autocmd BufRead,BufNewFile *.html,*.pt,*.xml,*.zcml setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
 set foldlevelstart=20 "set foldlevel higher so opened buffers arent folded
 "" open/close all folds
 nmap z7 zR
@@ -32,7 +36,7 @@ nmap z9 zo
 nmap z0 zc
 
 "" next/previous buffer
-nmap <silent> <C-left> :bprev<CR> 
+nmap <silent> <C-left> :bprev<CR>
 nmap <silent> <C-right> :bnext<CR>
 "" close buffer and goto next. works with TabBar
 nmap <C-x> :bd<CR>:bnext<CR>
@@ -40,11 +44,12 @@ nmap <C-x> :bd<CR>:bnext<CR>
 " select all
 nmap <C-a> ggVG
 "" copy/paste to/from system clipboard
-map <C-S-Y> "+yy
-map <C-S-P> "+P
+nmap <C-S-Y> "+yy
+nmap <C-S-P> "+P
 
 "" delete into blackhole register, so that other aren't overwritten
-map <Del> "_d
+"" DEFAULT BEHAVIOR NOW?
+""map <Del> "_d
 
 "" TagList
 nmap <f10> :TlistToggle<CR>
