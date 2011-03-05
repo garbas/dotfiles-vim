@@ -1,3 +1,7 @@
+"" TODO:
+"" pep8 doesn't display error by default on opening the buffer anymore. like
+"" shortcuts for copy paste btw. sys clipboard do not work anymore
+
 source $HOME/.vim/config-common
 source $HOME/.vim/config-textmate-like
 
@@ -43,7 +47,12 @@ nmap <C-x> :bd<CR>:bnext<CR>
 
 " select all
 nmap <C-a> ggVG
-"" copy/paste to/from system clipboard
+
+"" default copy/paste
+nmap 1 "ay
+nmap 11 "ayy
+nmap 2 "ap
+"" copy/paste paste to/from clipboard
 nmap <C-S-Y> "+yy
 nmap <C-S-P> "+P
 
