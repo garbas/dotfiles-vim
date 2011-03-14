@@ -24,7 +24,7 @@ nnoremap <LEADER>w gqip
 "" THET
 
 "" show right margin
-:set colorcolumn=80
+:set colorcolumn=79
 
 "" allow dot to enter command mode from normal mode
 noremap . :
