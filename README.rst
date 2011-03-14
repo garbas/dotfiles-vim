@@ -31,7 +31,7 @@ Maintainance
 
   % git pull
   % git submodule update --init
-  % cd bundle/command-t
+  % cd addons/Command-T
   % rake make
 
 
