@@ -108,7 +108,7 @@ function! Preserve(command)
     let @/=_s
     call cursor(l, c)
 endfunction
-nmap <leader>w :call Preserve("%s/\\s\\+$//e")<CR>
+nmap <leader>W :call Preserve("%s/\\s\\+$//e")<CR>
 
 ""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
