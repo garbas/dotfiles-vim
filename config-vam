@@ -1,7 +1,7 @@
 set runtimepath+=~/.vim/addons/vim-addon-manager
 fun ActivateAddons(addons)
   try
-    call scriptmanager#Activate(a:addons)
+    call vam#ActivateAddons(a:addons)
   catch /.*/
     echoe v:exception
   endtry
