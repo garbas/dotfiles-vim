@@ -1,0 +1,72 @@
+source $HOME/.vim/config-common
+source $HOME/.vim/config-textmate-like
+
+source $HOME/.vim/config-vam
+""let s:scm_plugin_sources['vim-pep8'] = { 'type' : 'git', 'url' : 'git://github.com/nvie/vim-pep8.git' }
+""let s:scm_plugin_sources['vim-pyflakes'] = { 'type' : 'git', 'url' : 'git://github.com/kevinw/pyflakes-vim.git' }
+call ActivateAddons(['ack','fugitive','pep83160','pyflakes2441','snipMate','supertab','showmarks','jslint','jQuery','lusty','The_NERD_tree','TabBar','taglist','TaskList'])
+
+colorscheme wombat
+
+"" This setting will cause the cursor to very briefly jump to a
+"" brace/parenthese/bracket's "match" whenever you type a closing or
+"" opening brace/parenthese/bracket.
+set showmatch
+set ttyfast
+"" my way to wrap text
+nnoremap <LEADER>w gqip
+
+
+"" THET
+
+"" allow dot to enter command mode from normal mode
+noremap . :
+"" allow ctrl-enter to generate escape key sequence
+inoremap <C-BS> <Esc>
+nmap ä i
+
+"" bufstop for xml based files
+autocmd BufRead,BufNewFile *.html,*.pt,*.xml,*.zcml setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+set foldlevelstart=20 "set foldlevel higher so opened buffers arent folded
+"" open/close all folds
+nmap z7 zR
+nmap z8 zM
+nmap z9 zo
+nmap z0 zc
+
+"" next/previous buffer
+nmap <silent> <C-left> :bprev<CR>
+nmap <silent> <C-right> :bnext<CR>
+"" close buffer and goto next. works with TabBar
+nmap <C-x> :bd<CR>:bnext<CR>
+
+" select all
+nmap <C-a> ggVG
+"" copy/paste to/from system clipboard
+nmap <C-S-Y> "+yy
+nmap <C-S-P> "+P
+
+"" delete into blackhole register, so that other aren't overwritten
+"" DEFAULT BEHAVIOR NOW?
+""map <Del> "_d
+
+"" TagList
+nmap <f10> :TlistToggle<CR>
+"" TaskList
+nmap <F11> :TaskList<CR>
+
+"" quit fast
+"nmap :qq<CR> :qall<CR>
+
+"" NERDTree
+noremap <silent> <f9> :NERDTreeToggle<CR>
+noremap <silent> <f8> :NERDTreeFromBookmark<Space>
+noremap <silent> <f7> :NERDTreeFind<CR>
+let NERDTreeIgnore=['\~$', '\.svn$', '\.git*$', '\.pyc$', '\.pyo$', '\.mo$']
+" set the sort order to alphabetical
+let NERDTreeSortOrder=[]
+" when the root is changed, change Vim's working dir
+let NERDTreeChDirMode=2
+
+"" vim:ft=vim
