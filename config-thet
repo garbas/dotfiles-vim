@@ -23,6 +23,9 @@ nnoremap <LEADER>w gqip
 
 "" THET
 
+"" show right margin
+:set colorcolumn=80
+
 "" allow dot to enter command mode from normal mode
 noremap . :
 "" allow ctrl-enter to generate escape key sequence
