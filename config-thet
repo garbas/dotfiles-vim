@@ -18,13 +18,15 @@ colorscheme wombat
 set showmatch
 set ttyfast
 "" my way to wrap text
-nnoremap <LEADER>w gqip
+nnoremap <leader>w gqip
+"" remap
+map <silent> <leader>r :set spell!<CR>
+nmap <leader>s :call Preserve("%s/\\s\\+$//e")<CR>
 
 
 "" THET
-
-"" show right margin
-:set colorcolumn=79
+set nowrap
+set colorcolumn=79
 
 "" allow dot to enter command mode from normal mode
 noremap . :
@@ -35,12 +37,30 @@ nmap ä i
 "" bufstop for xml based files
 autocmd BufRead,BufNewFile *.html,*.pt,*.xml,*.zcml setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
+nmap <F5> :set nosmarttab<CR>
+"":setlocal si! si?<CR>
+""filetype indent off
+""filetype plugin indent off
+""set noautoindent
+""set nocindent
+""set nosmarttab
+
 set foldlevelstart=20 "set foldlevel higher so opened buffers arent folded
 "" open/close all folds
-nmap z7 zR
-nmap z8 zM
-nmap z9 zo
-nmap z0 zc
+""nmap <C-TAB> za
+""nmap <C-S-TAB> zA
+
+""nmap z7 zR
+""nmap z8 zM
+""nmap z9 zo
+""nmap z0 zc
+""
+""nmap <C-S-Up> zR
+""nmap <C-S-Down> zM
+""nmap <C-S-Right> zo
+""nmap <C-S-Left> zc
+nmap <C-S-Right> za
+nmap <C-S-Left> zA
 
 "" next/previous buffer
 nmap <silent> <C-left> :bprev<CR>
