@@ -35,6 +35,11 @@ Maintainance
   % rake make
 
 
+In vim, run :UpdateAddons from time to time.
+
+Find more information about vam here:
+https://github.com/MarcWeber/vim-addon-manager/blob/master/doc/vim-addon-manager.txt
+
 build `command-t` bundle (this you have to do each time you upgrade command-t
 bundle)::
 
