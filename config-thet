@@ -9,7 +9,8 @@ source $HOME/.vim/config-vam
 ""call ActivateAddons(['ack','pep83160','pyflakes2441','snipMate','supertab','showmarks','jQuery','lusty','The_NERD_tree','taglist','TaskList'])
 
 "" https://github.com/MarcWeber/vim-addon-manager-known-repositories/pull/11
-call ActivateAddons(['ack','vim-pep8','pyflakes-vim','snipMate','supertab','showmarks','jQuery','lusty','The_NERD_tree','TabBar','taglist','TaskList'])
+""set scm_merge_strategy='force'
+call ActivateAddons(['ack','pep83160','pyflakes2441','snipMate','supertab','showmarks','jQuery','lusty','The_NERD_tree','TabBar','taglist','TaskList'])
 
 ""colorscheme peaksea
 colorscheme wombat
