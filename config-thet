@@ -2,22 +2,26 @@
 "" pep8 doesn't display error by default on opening the buffer anymore. like
 "" shortcuts for copy paste btw. sys clipboard do not work anymore
 
+"" DEBUG
+""set verbose
+
 source $HOME/.vim/config-common
 source $HOME/.vim/config-textmate-like
 
 source $HOME/.vim/config-vam
 ""let s:scm_plugin_sources['vim-pep8'] = { 'type' : 'git', 'url' : 'git://github.com/nvie/vim-pep8.git' }
 ""let s:scm_plugin_sources['vim-pyflakes'] = { 'type' : 'git', 'url' : 'git://github.com/kevinw/pyflakes-vim.git' }
-call ActivateAddons(['ack','fugitive','pep83160','pyflakes2441','snipMate','supertab','showmarks','jslint','jQuery','lusty','The_NERD_tree','TabBar','taglist','TaskList'])
+""call ActivateAddons(['ack','fugitive','pep83160','pyflakes2441','snipMate','supertab','showmarks','jslint','jQuery','lusty','The_NERD_tree','TabBar','taglist','TaskList'])
+""call ActivateAddons(['ack','pep83160','pyflakes2441','snipMate','supertab','showmarks','jQuery','lusty','The_NERD_tree','taglist','TaskList'])
+call ActivateAddons(['ack','pep83160','pyflakes2441','snipMate','supertab','showmarks','jQuery','lusty','The_NERD_tree','TabBar','taglist','TaskList'])
 
+""colorscheme peaksea
 colorscheme wombat
 
-"" This setting will cause the cursor to very briefly jump to a
-"" brace/parenthese/bracket's "match" whenever you type a closing or
-"" opening brace/parenthese/bracket.
+"" indicate open/closing brackets
 set showmatch
 set ttyfast
-"" my way to wrap text
+"" wrap text
 nnoremap <leader>w gqip
 "" remap
 map <silent> <leader>r :set spell!<CR>
@@ -32,15 +36,13 @@ set colorcolumn=79
 noremap . :
 "" allow ctrl-enter to generate escape key sequence
 inoremap <C-BS> <Esc>
-nmap ä i
+""nmap ä i
 
 "" bufstop for xml based files
 autocmd BufRead,BufNewFile *.html,*.pt,*.xml,*.zcml setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 nmap <F5> :set nosmarttab<CR>
 "":setlocal si! si?<CR>
-""filetype indent off
-""filetype plugin indent off
 ""set noautoindent
 ""set nocindent
 ""set nosmarttab
@@ -78,6 +80,9 @@ nmap 2 "ap
 "" copy/paste paste to/from clipboard
 nmap <C-S-Y> "+yy
 nmap <C-S-P> "+P
+
+""set clipboard=unnamed
+"" set clipboard=unnamedplus
 
 "" delete into blackhole register, so that other aren't overwritten
 "" DEFAULT BEHAVIOR NOW?
