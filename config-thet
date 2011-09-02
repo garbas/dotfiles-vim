@@ -48,18 +48,8 @@ set foldlevelstart=20 "set foldlevel higher so opened buffers arent folded
 "" open/close all folds
 ""nmap <C-TAB> za
 ""nmap <C-S-TAB> zA
-
-""nmap z7 zR
-""nmap z8 zM
-""nmap z9 zo
-""nmap z0 zc
-""
-""nmap <C-S-Up> zR
-""nmap <C-S-Down> zM
-""nmap <C-S-Right> zo
-""nmap <C-S-Left> zc
-nmap <C-S-Right> za
-nmap <C-S-Left> zA
+nmap <C-S-Right> zO
+nmap <C-S-Left> zC
 
 "" next/previous buffer
 nmap <silent> <C-left> :bprev<CR>
@@ -82,8 +72,8 @@ nmap <C-S-P> "+P
 "" set clipboard=unnamedplus
 
 "" delete into blackhole register, so that other aren't overwritten
-"" DEFAULT BEHAVIOR NOW?
-""map <Del> "_d
+"" thanks bairu from #vim!
+nnoremap <Del> "_x
 
 "" TagList
 nmap <f10> :TlistToggle<CR>
