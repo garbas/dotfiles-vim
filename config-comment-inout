@@ -1,0 +1,34 @@
+" from: http://vim.wikia.com/wiki/Easy_%28un%29commenting_out_of_source_code
+
+" lhs comments
+" ,# shell, python, perl
+" ,/ c++
+" ,> email quote
+" ," vim
+" ,% latex, prolog
+" ,! assembly/X-resources
+" ,; scheme
+" ,- sql, ada, lua
+" ,c clears any of the previous comments
+map <leader># :s/^/#/<CR>
+map <leader>/ :s/^/\/\//<CR>
+map <leader>> :s/^/> /<CR>
+map <leader>" :s/^/\"/<CR>
+map <leader>% :s/^/%/<CR>
+map <leader>! :s/^/!/<CR>
+map <leader>; :s/^/;/<CR>
+map <leader>- :s/^/--/<CR>
+map <leader>c :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR>
+
+" wrapping comments
+" ,* c
+" ,( Standard ML
+" ,< html
+" ,d clears any of the wrapping comments
+map <leader>* :s/^\(.*\)$/\/\* \1 \*\//<CR>
+map <leader>( :s/^\(.*\)$/\(\* \1 \*\)/<CR>
+map <leader>< :s/^\(.*\)$/<!-- \1 -->/<CR>
+map <leader>d :s/^\([/(]\*\\|<!--\) \(.*\) \(\*[/)]\\|-->\)$/\2/<CR>
+
+
+"" vim:ft=vim
