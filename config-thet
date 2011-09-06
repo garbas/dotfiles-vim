@@ -3,6 +3,7 @@
 
 source $HOME/.vim/config-common
 source $HOME/.vim/config-textmate-like
+source $HOME/.vim/config-comment-inout
 
 source $HOME/.vim/config-vam
 ""call ActivateAddons(['ack','fugitive','pep83160','pyflakes2441','snipMate','supertab','showmarks','jslint','jQuery','lusty','The_NERD_tree','TabBar','taglist','TaskList'])
