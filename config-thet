@@ -66,8 +66,8 @@ nmap 1 "ay
 nmap 11 "ayy
 nmap 2 "ap
 "" copy/paste paste to/from clipboard
-nmap <C-S-Y> "+yy
-nmap <C-S-P> "+P
+map <C-S-Y> "+yy
+map <C-S-P> "+P
 
 ""set clipboard=unnamed
 "" set clipboard=unnamedplus
