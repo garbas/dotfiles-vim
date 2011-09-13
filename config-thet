@@ -11,7 +11,7 @@ source $HOME/.vim/config-vam
 
 "" https://github.com/MarcWeber/vim-addon-manager-known-repositories/pull/11
 ""set scm_merge_strategy='force'
-call ActivateAddons(['ack','pep83160','pyflakes2441','snipMate','supertab','showmarks','jQuery','lusty','The_NERD_tree','TabBar','taglist','TaskList'])
+call ActivateAddons(['ack','EasyGrep', 'pep83160','pyflakes2441','snipMate','supertab','showmarks','jQuery','jslint', 'lusty','The_NERD_tree','TabBar','taglist','TaskList'])
 
 ""colorscheme peaksea
 colorscheme wombat
@@ -29,6 +29,8 @@ nmap <leader>s :call Preserve("%s/\\s\\+$//e")<CR>
 "" THET
 set nowrap
 set colorcolumn=79
+
+map <leader>h :TbToggle<CR>
 
 "" allow dot to enter command mode from normal mode
 noremap . :
