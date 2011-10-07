@@ -15,6 +15,8 @@ call ActivateAddons(['ack','EasyGrep', 'pep83160','pyflakes2441','snipMate','sup
 
 ""colorscheme peaksea
 colorscheme wombat
+map <leader>pw :colorscheme wombat<CR>
+map <leader>pp :colorscheme peaksea<CR>
 
 "" indicate open/closing brackets
 set showmatch
@@ -51,8 +53,11 @@ set foldlevelstart=20 "set foldlevel higher so opened buffers arent folded
 "" open/close all folds
 ""nmap <C-TAB> za
 ""nmap <C-S-TAB> zA
-nmap <C-S-Right> zO
-nmap <C-S-Left> zC
+nmap <C-S-Right> zo
+nmap <C-S-Left> zc
+"" termit overrides usage of -A-
+""nmap <C-S-A-Right> zO
+""nmap <C-S-A-Left> zC
 
 "" next/previous buffer
 nmap <silent> <C-left> :bprev<CR>
