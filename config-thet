@@ -11,7 +11,7 @@ source $HOME/.vim/config-vam
 
 "" https://github.com/MarcWeber/vim-addon-manager-known-repositories/pull/11
 ""set scm_merge_strategy='force'
-call ActivateAddons(['ack','EasyGrep', 'pep83160','pyflakes2441','snipMate','supertab','showmarks','jQuery','jslint', 'lusty','The_NERD_tree','TabBar','taglist','TaskList'])
+call ActivateAddons(['EasyGrep','git-vim','pep83160','pyflakes2441','snipMate','supertab','showmarks','jQuery','jslint', 'lusty','The_NERD_tree','TabBar','taglist','TaskList'])
 
 ""colorscheme peaksea
 colorscheme wombat
