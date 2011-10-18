@@ -11,7 +11,9 @@ source $HOME/.vim/config-vam
 
 "" https://github.com/MarcWeber/vim-addon-manager-known-repositories/pull/11
 ""set scm_merge_strategy='force'
-call ActivateAddons(['EasyGrep','git-vim','pep83160','pyflakes2441','snipMate','supertab','showmarks','jQuery','jslint', 'lusty','The_NERD_tree','TabBar','taglist','TaskList'])
+"" TODO: reactive:
+"" jslint
+call ActivateAddons(['EasyGrep','git-vim','pep83160','pyflakes2441','snipMate','supertab','showmarks','jQuery':'lusty','The_NERD_tree','TabBar','taglist','TaskList'])
 
 ""colorscheme peaksea
 colorscheme wombat
@@ -31,6 +33,25 @@ nmap <leader>s :call Preserve("%s/\\s\\+$//e")<CR>
 "" THET
 set nowrap
 set colorcolumn=79
+
+
+""" EASYGREP
+let g:EasyGrepMode=1
+let g:EasyGrepCommand=0
+let g:EasyGrepRecursive=0
+let g:EasyGrepIgnoreCase=1
+let g:EasyGrepHidden=0
+let g:EasyGrepAllOptionsInExplorer=1
+let g:EasyGrepWindow=1
+let g:EasyGrepReplaceWindowMode=0
+let g:EasyGrepOpenWindowOnMatch=1
+let g:EasyGrepEveryMatch=0
+let g:EasyGrepJumpToMatch=1
+let g:EasyGrepInvertWholeWord=0
+let g:EasyGrepFileAssociationsInExplorer=0
+let g:EasyGrepOptionPrefix='<leader>vy'
+let g:EasyGrepReplaceAllPerFile=0
+
 
 map <leader>h :TbToggle<CR>
 
