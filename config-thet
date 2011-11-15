@@ -13,7 +13,10 @@ source $HOME/.vim/config-vam
 ""set scm_merge_strategy='force'
 "" TODO: reactive:
 "" jslint
-call ActivateAddons(['EasyGrep','git-vim','pep83160','pyflakes2441','snipMate','supertab','showmarks','jQuery','lusty','The_NERD_tree','TabBar','taglist','TaskList'])
+"" git-vim
+"" snipMate, supertab
+"" showmarks
+call ActivateAddons(['EasyGrep','fugitive','pep83160','pyflakes2441','jQuery','lusty','The_NERD_tree','TabBar','taglist','TaskList'])
 
 ""colorscheme peaksea
 colorscheme wombat
