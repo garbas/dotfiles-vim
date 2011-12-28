@@ -16,7 +16,17 @@ source $HOME/.vim/config-vam
 "" git-vim
 "" snipMate, supertab
 "" showmarks
-call ActivateAddons(['EasyGrep','fugitive','pep83160','pyflakes2441','jQuery','lusty','The_NERD_tree','TabBar','taglist','TaskList'])
+call ActivateAddons([
+            \ 'EasyGrep',
+            \ 'fugitive',
+            \ 'pep83160',
+            \ 'pyflakes2441',
+            \ 'jQuery',
+            \ 'lusty',
+            \ 'The_NERD_tree',
+            \ 'TabBar','taglist',
+            \ 'TaskList',
+            \ 'vimroom'])
 
 ""colorscheme peaksea
 colorscheme wombat
