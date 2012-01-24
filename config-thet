@@ -11,22 +11,43 @@ source $HOME/.vim/config-vam
 
 "" https://github.com/MarcWeber/vim-addon-manager-known-repositories/pull/11
 ""set scm_merge_strategy='force'
-"" TODO: reactive:
 "" jslint
 "" git-vim
 "" snipMate, supertab
 "" showmarks
+"" taglist
+"" vimroom: http://projects.mikewest.org/vimroom/
+"" 'TabBar',
+""          \ 'jQuery',
+""          \ 'CodeOverview',
+""          \ 'Buffergator',
+""            \ 'vim-less',
+""
+
+""            \ 'javaScriptLint',
+""            \ 'snipmate',
+""            \ 'snipmate-snippets',
+
 call ActivateAddons([
+            \ 'snipmate',
+            \ 'snipmate-snippets',
+            \ 'AutoComplPop',
             \ 'EasyGrep',
             \ 'fugitive',
             \ 'pep83160',
             \ 'pyflakes2441',
-            \ 'jQuery',
+            \ 'TaskList',
             \ 'lusty',
             \ 'The_NERD_tree',
-            \ 'TabBar','taglist',
-            \ 'TaskList',
-            \ 'vimroom'])
+            \ 'Tagbar',
+            \ 'FuzzyFinder',
+            \ 'vimroom',
+            \ 'jslint', 
+            \ 'jQuery',
+            \ 'css_color',
+            \ 'html5',
+            \ ])
+
 
 ""colorscheme peaksea
 colorscheme wombat
@@ -42,11 +63,79 @@ nnoremap <leader>w gqip
 map <silent> <leader>r :set spell!<CR>
 nmap <leader>s :call Preserve("%s/\\s\\+$//e")<CR>
 
+"" garbas
+" Tagbar {{{2
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+nnoremap tt :TagbarToggle<CR>
+
+" ZCML type
+" XXX: This doesn't currently work because I use a filetype setting
+" of "xml.zcml".
+let g:tagbar_type_zcml = {
+    \ 'ctagstype': 'zcml',
+    \ 'kinds': [
+        \ 'n:name',
+        \ 'g:profile',
+        \ 'p:permission',
+        \ 'h:handler',
+        \ 'm:component',
+        \ 'f:factory',
+        \ 'c:class',
+        \ 'i:id',
+        \ 's:schema'
+    \ ]
+\}
+" cfg file type
+let g:tagbar_type_cfg = {
+    \ 'ctagstype': 'ini',
+    \ 'kinds': ['s:section']
+\ }
+" Markdown type
+let g:tagbar_type_markdown = {
+    \ 'ctagstype': 'markdown',
+    \ 'kinds': ['h:header']
+\ }
+
+"" buffergator
+let g:buffergator_sort_regime = 'mru'
+let g:buffergator_viewport_split_policy = 'T'
+
+
+" Fuzzy Finder {{{2
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+" max results, lot o' files in a buildout :)
+let g:fuzzy_ceiling=35000
+" show full paths
+let g:fuzzy_path_display = 'highlighted_path'
+" ignored files
+let g:fuzzy_ignore = "*.png;*.PNG;*.pyc;*.pyo;*.JPG;*.jpg;*.GIF;*.gif;.svn/**;.git/**;*.mo;.DS_Store;.AppleDouble"
+" available modes
+let g:FuzzyFinderOptions = {
+    \'File': {'mode_available': 1},
+    \'Buffer': {'mode_available': 0},
+    \'Dir': {'mode_available': 0},
+    \'MruFile': {'mode_available': 0},
+    \'MruCmd': {'mode_available': 0},
+    \'Bookmark': {'mode_available': 0},
+    \}
+" Don't delete a full path when using backspace in file mode
+let g:FuzzyFinderOptions.File.smart_bs = 0
+
+" Shortcuts for opening fuzzy finder
+nmap <LEADER>f :FufFile<SPACE>**/<CR>
+nmap <LEADER>F :FufRenewCache<CR>
+"nmap <leader>t :FufCoverageFile<Space>
+"nmap <leader>ft :FufTag<Space>
+
 
 "" THET
 set nowrap
 set colorcolumn=79
 
+"" MULTIPAGE
+"" see: http://stackoverflow.com/questions/6873076/auto-scrollable-pagination-with-vim-using-vertical-split
+nmap <silent> <Leader>ef :vsplit<bar>wincmd l<bar>exe "norm! Ljz<c-v><cr>"<cr>:set scb<cr>:wincmd h<cr> :set scb<cr>
 
 """ EASYGREP
 let g:EasyGrepMode=1
@@ -66,7 +155,31 @@ let g:EasyGrepOptionPrefix='<leader>vy'
 let g:EasyGrepReplaceAllPerFile=0
 
 
-map <leader>h :TbToggle<CR>
+"" move lines and blocks
+"" see http://vim.wikia.com/wiki/Moving_lines_up_or_down
+nnoremap <C-Up> :m+<CR>==
+nnoremap <C-Down> :m-2<CR>==
+inoremap <C-Up> <Esc>:m+<CR>==gi
+inoremap <C-Down> <Esc>:m-2<CR>==gi
+vnoremap <C-Up> :m'>+<CR>gv=gv
+vnoremap <C-Down> :m-2<CR>gv=gv
+
+
+"" scroll up / down
+map <S-Up> <Up>zz
+map <S-Down> <Down>zz
+""inoremap <C-Up> <Esc><Up>zz<CR>==gi
+""inoremap <C-Down> <Esc><Down>zz<CR>==gi
+""vnoremap <C-Up> <Esc><Up>zz<CR>gv=gv
+""vnoremap <C-Down> <Esc><Down>zz<CR>gv=gv
+
+
+"" center search
+nmap n nzz
+nmap N Nzz
+
+
+""map <leader>h :TbToggle<CR>
 
 "" allow dot to enter command mode from normal mode
 noremap . :
@@ -117,22 +230,100 @@ map <C-S-P> "+P
 "" thanks bairu from #vim!
 nnoremap <Del> "_x
 
-"" TagList
-nmap <f10> :TlistToggle<CR>
+"""" TagList
+""nmap <f10> :TlistToggle<CR>
 "" TaskList
 nmap <F11> :TaskList<CR>
 
 "" quit fast
 "nmap :qq<CR> :qall<CR>
 
-"" NERDTree
+"""" NERDTree
 noremap <silent> <f9> :NERDTreeToggle<CR>
-noremap <silent> <f8> :NERDTreeFromBookmark<Space>
-noremap <silent> <f7> :NERDTreeFind<CR>
+""noremap <silent> <f8> :NERDTreeFromBookmark<Space>
+""noremap <silent> <f7> :NERDTreeFind<CR>
 let NERDTreeIgnore=['\~$', '\.svn$', '\.git*$', '\.pyc$', '\.pyo$', '\.mo$']
-" set the sort order to alphabetical
+""" set the sort order to alphabetical
 let NERDTreeSortOrder=[]
-" when the root is changed, change Vim's working dir
-let NERDTreeChDirMode=2
+""" when the root is changed, change Vim's working dir
+""let NERDTreeChDirMode=2
+let NERDTreeChDirMode=0
+let NERDTreeHighlightCursorline=1
+let NERDTreeHijackNetrw=0
+let NERDTreeMouseMode=3
+let NERDTreeMinimalUI=1
+let NERDTreeWinSize=31
+
+
+
+"" list
+set nolist
+nnoremap <leader>p :set list!<CR>
+"" lusty
+nnoremap <leader>, :LustyJuggler<CR>
+nnoremap <leader>m :LustyFilesystemExplorer<CR>
+nnoremap <leader>. :LustyFilesystemExplorerFromHere<CR>
+
+
+"" autocomplpopup
+""fun! GetSnipsInCurrentScope()
+""    let snips = {}
+""    for scope in [bufnr('%')] + split(&ft, '\.') + ['_']
+""        call extend(snips, get(s:snippets, scope, {}), 'keep')
+""        call extend(snips, get(s:multi_snips, scope, {}), 'keep')
+""    endfor
+""    return snips
+""endf
+""let g:acp_behaviorSnipmateLength=1
+
+"" autocomplete behavior
+"" http://vim.wikia.com/wiki/Improve_completion_popup_menu
+""inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+""inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+""inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+""inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+""inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+""inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
+"" split windows
+"" http://techdebug.com/blog/2008/05/22/vim-split-tips/
+
+" scoll lock toggle
+map <leader>zz :let &scrolloff=999-&scrolloff<cr>
+
+" Max/unmax splits
+nnoremap <c-W>O :call MaximizeToggle()<cr>
+nnoremap <c-W>o :call MaximizeToggle()<cr>
+nnoremap <c-W><c-O> :call MaximizeToggle()<cr>
+
+function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
+
+nnoremap <C-w>a :call WindowToggle()<CR>
+function! WindowToggle()
+    "" toggle
+    let s:toggle_split = exists('s:toggle_split') ? !s:toggle_split : 1
+    if s:toggle_split
+        "" <C-w>w<CR>
+        echo 'implement me 1'
+    else
+        "" <C-p>p<CR>
+        echo 'imeplement me 2'
+    endif
+endfunction
+
 
 "" vim:ft=vim
