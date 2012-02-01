@@ -157,12 +157,12 @@ let g:EasyGrepReplaceAllPerFile=0
 
 "" move lines and blocks
 "" see http://vim.wikia.com/wiki/Moving_lines_up_or_down
-nnoremap <C-Up> :m+<CR>==
-nnoremap <C-Down> :m-2<CR>==
-inoremap <C-Up> <Esc>:m+<CR>==gi
-inoremap <C-Down> <Esc>:m-2<CR>==gi
-vnoremap <C-Up> :m'>+<CR>gv=gv
-vnoremap <C-Down> :m-2<CR>gv=gv
+"nnoremap <C-Up> :m+<CR>==
+"nnoremap <C-Down> :m-2<CR>==
+"inoremap <C-Up> <Esc>:m+<CR>==gi
+"inoremap <C-Down> <Esc>:m-2<CR>==gi
+"vnoremap <C-Up> :m'>+<CR>gv=gv
+"vnoremap <C-Down> :m-2<CR>gv=gv
 
 
 "" scroll up / down
@@ -212,6 +212,11 @@ nmap <silent> <C-right> :bnext<CR>
 "" close buffer and goto next. works with TabBar
 nmap <C-x> :bd<CR>:bnext<CR>
 
+nmap <C-n> :tab split<CR>
+nmap <C-Up> :tabn<CR>
+nmap <C-Down> :tabp<CR>
+nmap <C-c> :tabclose<CR>
+
 " select all
 nmap <C-a> ggVG
 
@@ -250,7 +255,7 @@ let NERDTreeSortOrder=[]
 let NERDTreeChDirMode=0
 let NERDTreeHighlightCursorline=1
 let NERDTreeHijackNetrw=0
-let NERDTreeMouseMode=3
+let NERDTreeMouseMode=2
 let NERDTreeMinimalUI=1
 let NERDTreeWinSize=31
 
