@@ -26,6 +26,7 @@ source $HOME/.vim/config-vam
 
 ""            \ 'javaScriptLint',
 ""            \ 'snipmate',
+""            \ 'python%790',
 ""            \ 'snipmate-snippets',
 
 call ActivateAddons([
@@ -44,13 +45,17 @@ call ActivateAddons([
             \ 'vimroom',
             \ 'jslint', 
             \ 'jQuery',
-            \ 'css_color',
             \ 'html5',
+            \ 'css_color@skammer',
+            \ 'delimitMate',
+            \ 'scratch',
+            \ 'utl',
+            \ 'molokai',
             \ ])
 
-
+colorscheme molokai
 ""colorscheme peaksea
-colorscheme wombat
+""colorscheme wombat
 map <leader>pw :colorscheme wombat<CR>
 map <leader>pp :colorscheme peaksea<CR>
 
