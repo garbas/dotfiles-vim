@@ -194,6 +194,8 @@ inoremap <C-BS> <Esc>
 
 "" bufstop for xml based files
 autocmd BufRead,BufNewFile *.html,*.pt,*.xml,*.zcml setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd BufRead,BufNewFile *.tex,*.txt,*.rst setlocal tw=79 fo=aw2tq
+autocmd BufRead,BufNewFile *.py setlocal tw=79 fo=aw2cq
 
 nmap <F5> :set nosmarttab<CR>
 "":setlocal si! si?<CR>
