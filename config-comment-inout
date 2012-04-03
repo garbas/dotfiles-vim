@@ -10,25 +10,25 @@
 " ,; scheme
 " ,- sql, ada, lua
 " ,c clears any of the previous comments
-map <leader># :s/^/#/<CR>
-map <leader>/ :s/^/\/\//<CR>
-map <leader>> :s/^/> /<CR>
-map <leader>" :s/^/\"/<CR>
-map <leader>% :s/^/%/<CR>
-map <leader>! :s/^/!/<CR>
-map <leader>; :s/^/;/<CR>
-map <leader>- :s/^/--/<CR>
-map <leader>c :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR>
+map <leader>c# :s/^/#/<CR>
+map <leader>c/ :s/^/\/\//<CR>
+map <leader>c> :s/^/> /<CR>
+map <leader>c" :s/^/\"/<CR>
+map <leader>c% :s/^/%/<CR>
+map <leader>c! :s/^/!/<CR>
+map <leader>c; :s/^/;/<CR>
+map <leader>c- :s/^/--/<CR>
+map <leader>cc :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR>
 
 " wrapping comments
 " ,* c
 " ,( Standard ML
 " ,< html
 " ,d clears any of the wrapping comments
-map <leader>* :s/^\(.*\)$/\/\* \1 \*\//<CR>
-map <leader>( :s/^\(.*\)$/\(\* \1 \*\)/<CR>
-map <leader>< :s/^\(.*\)$/<!-- \1 -->/<CR>
-map <leader>d :s/^\([/(]\*\\|<!--\) \(.*\) \(\*[/)]\\|-->\)$/\2/<CR>
+map <leader>c* :s/^\(.*\)$/\/\* \1 \*\//<CR>
+map <leader>c( :s/^\(.*\)$/\(\* \1 \*\)/<CR>
+map <leader>c< :s/^\(.*\)$/<!-- \1 -->/<CR>
+map <leader>cd :s/^\([/(]\*\\|<!--\) \(.*\) \(\*[/)]\\|-->\)$/\2/<CR>
 
 
 "" vim:ft=vim
