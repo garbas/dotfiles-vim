@@ -6,6 +6,9 @@ source $HOME/.vim/config-textmate-like
 source $HOME/.vim/config-comment-inout
 
 source $HOME/.vim/config-vam
+
+source /home/thet/.vim/bclose.vim
+
 ""call ActivateAddons(['ack','fugitive','pep83160','pyflakes2441','snipMate','supertab','showmarks','jslint','jQuery','lusty','The_NERD_tree','TabBar','taglist','TaskList'])
 ""call ActivateAddons(['ack','pep83160','pyflakes2441','snipMate','supertab','showmarks','jQuery','lusty','The_NERD_tree','taglist','TaskList'])
 
@@ -51,6 +54,8 @@ call ActivateAddons([
             \ 'scratch',
             \ 'utl',
             \ 'molokai',
+            \ 'Powerline',
+            \ 'Buffergator',
             \ ])
 
 colorscheme molokai
@@ -68,7 +73,47 @@ nnoremap <leader>w gqip
 map <silent> <leader>r :set spell!<CR>
 nmap <leader>s :call Preserve("%s/\\s\\+$//e")<CR>
 
+
+" Use ranger as vim file manager
+" http://ornicar.github.com/2011/02/12/ranger-as-vim-file-manager.html
+function! Ranger()
+    " Get a temp file name without creating it
+    let tmpfile = substitute(system('mktemp -u'), '\n', '', '')
+    " Launch ranger, passing it the temp file name
+    silent exec '!RANGER_RETURN_FILE='.tmpfile.' ra'
+    " If the temp file has been written by ranger
+    if filereadable(tmpfile)
+        " Get the selected file name from the temp file
+        let filetoedit = system('cat '.tmpfile)
+        exec 'edit '.filetoedit
+        call delete(tmpfile)
+    endif
+    redraw!
+endfunction
+"nmap <leader>q :call Ranger()<cr>
+
+"function! Ranger2()
+"    let tmp = /tmp/chosen
+"    silent !ra %:h --choosefile=/tmp/chosen 
+"    if filereadable(tmp)
+"        let filetoedit = system('cat '.tmp)
+"        exec 'edit '.filetoedit
+"        call delete(tmp)
+"    endif
+"    redraw!
+"endfunction
+"nmap <leader>q :call Ranger2()<cr>
+
+
 "" garbas
+
+" }}}
+" Powerline {{{
+
+function! Addons_powerline ()
+    let g:Powerline_symbols = 'fancy'
+endfunction
+
 " Tagbar {{{2
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 nnoremap tt :TagbarToggle<CR>
@@ -102,8 +147,18 @@ let g:tagbar_type_markdown = {
 \ }
 
 "" buffergator
-let g:buffergator_sort_regime = 'mru'
-let g:buffergator_viewport_split_policy = 'T'
+let g:buffergator_viewport_split_policy = 'L'
+let g:buffergator_sort_regime = 'filepath'
+let g:buffergator_display_regime = 'basename'
+let g:buffergator_split_size = 40
+let g:buffergator_autodismiss_on_select = 0
+let g:buffergator_suppress_keymaps = 1
+nnoremap <leader>/ :BuffergatorToggle<CR>
+
+"" lusty
+nnoremap <leader>, :LustyJuggler<CR>
+nnoremap <leader>m :LustyFilesystemExplorer<CR>
+nnoremap <leader>. :LustyFilesystemExplorerFromHere<CR>
 
 
 " Fuzzy Finder {{{2
@@ -132,6 +187,32 @@ nmap <LEADER>f :FufFile<SPACE>**/<CR>
 nmap <LEADER>F :FufRenewCache<CR>
 "nmap <leader>t :FufCoverageFile<Space>
 "nmap <leader>ft :FufTag<Space>
+
+" GUI {{{
+if has('gui_running')
+    set antialias
+
+    " Remove all the UI cruft
+    set go-=T
+    set go-=l
+    set go-=L
+    set go-=r
+    set go-=R
+    set go-=M
+    set go-=m
+    highlight SpellBad term=underline gui=undercurl guisp=Orange
+
+    " Use a line-drawing char for pretty vertical splits.
+    set fillchars+=vert:│
+
+    " Different cursors for different modes.
+    "set guicursor=n-c:block-Cursor-blinkon0
+    "set guicursor+=v:block-vCursor-blinkon0
+    "set guicursor+=i-ci:ver20-iCursor
+    " Disable all blinking:
+    set guicursor+=a:blinkon0
+" }}}
+endif
 
 
 "" THET
@@ -194,8 +275,10 @@ inoremap <C-BS> <Esc>
 
 "" bufstop for xml based files
 autocmd BufRead,BufNewFile *.html,*.pt,*.xml,*.zcml setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd BufRead,BufNewFile *.tex,*.txt,*.rst setlocal tw=79 fo=aw2tq
-autocmd BufRead,BufNewFile *.py setlocal tw=79 fo=aw2cq
+
+"" autocomplpopup bug
+""autocmd BufRead,BufNewFile *.tex,*.txt,*.rst setlocal tw=79 fo=aw2tq
+""autocmd BufRead,BufNewFile *.py setlocal tw=79 fo=aw2cq
 
 nmap <F5> :set nosmarttab<CR>
 "":setlocal si! si?<CR>
@@ -217,7 +300,9 @@ nmap <C-S-Left> zc
 nmap <silent> <C-left> :bprev<CR>
 nmap <silent> <C-right> :bnext<CR>
 "" close buffer and goto next. works with TabBar
-nmap <C-x> :bd<CR>:bnext<CR>
+""nmap <C-x> :bd<CR>:bnext<CR>
+"" Bclose script doesn't delete windows. Annoyance Free.
+nmap <C-x> :Bclose<CR>
 
 nmap <C-n> :tab split<CR>
 nmap <C-Up> :tabn<CR>
@@ -254,28 +339,23 @@ nmap <F11> :TaskList<CR>
 noremap <silent> <f9> :NERDTreeToggle<CR>
 ""noremap <silent> <f8> :NERDTreeFromBookmark<Space>
 ""noremap <silent> <f7> :NERDTreeFind<CR>
-let NERDTreeIgnore=['\~$', '\.svn$', '\.git*$', '\.pyc$', '\.pyo$', '\.mo$']
+let g:NERDTreeIgnore=['\~$', '\.svn$', '\.git*$', '\.pyc$', '\.pyo$', '\.mo$']
 """ set the sort order to alphabetical
-let NERDTreeSortOrder=[]
+let g:NERDTreeSortOrder=[]
 """ when the root is changed, change Vim's working dir
 ""let NERDTreeChDirMode=2
-let NERDTreeChDirMode=0
-let NERDTreeHighlightCursorline=1
-let NERDTreeHijackNetrw=0
-let NERDTreeMouseMode=2
-let NERDTreeMinimalUI=1
-let NERDTreeWinSize=31
+let g:NERDTreeChDirMode=0
+let g:NERDTreeHighlightCursorline=1
+let g:NERDTreeHijackNetrw=0
+let g:NERDTreeMouseMode=2
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeWinSize=31
 
 
 
 "" list
 set nolist
 nnoremap <leader>p :set list!<CR>
-"" lusty
-nnoremap <leader>, :LustyJuggler<CR>
-nnoremap <leader>m :LustyFilesystemExplorer<CR>
-nnoremap <leader>. :LustyFilesystemExplorerFromHere<CR>
-
 
 "" autocomplpopup
 ""fun! GetSnipsInCurrentScope()
