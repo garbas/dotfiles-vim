@@ -21,6 +21,7 @@ source $HOME/.vim/config-vam
 " taglist
 " tslime
 " unimpaired
+" utl
 " vim-less
 " vimroom: http://projects.mikewest.org/vimroom/
 
@@ -46,7 +47,6 @@ call ActivateAddons([
             \ 'scratch',
             \ 'snipmate',
             \ 'snipmate-snippets',
-"            \ 'utl',
             \ 'vimroom',
             \ ])
 
