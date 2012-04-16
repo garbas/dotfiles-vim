@@ -4,75 +4,152 @@
 source $HOME/.vim/config-common
 source $HOME/.vim/config-textmate-like
 source $HOME/.vim/config-comment-inout
-
-source $HOME/.vim/config-vam
-
-source /home/thet/.vim/bclose.vim
-
-""call ActivateAddons(['ack','fugitive','pep83160','pyflakes2441','snipMate','supertab','showmarks','jslint','jQuery','lusty','The_NERD_tree','TabBar','taglist','TaskList'])
-""call ActivateAddons(['ack','pep83160','pyflakes2441','snipMate','supertab','showmarks','jQuery','lusty','The_NERD_tree','taglist','TaskList'])
-
-"" https://github.com/MarcWeber/vim-addon-manager-known-repositories/pull/11
-""set scm_merge_strategy='force'
-"" jslint
-"" git-vim
-"" snipMate, supertab
-"" showmarks
-"" taglist
-"" vimroom: http://projects.mikewest.org/vimroom/
-"" 'TabBar',
-""          \ 'jQuery',
-""          \ 'CodeOverview',
-""          \ 'Buffergator',
-""            \ 'vim-less',
-""
-
-""            \ 'javaScriptLint',
-""            \ 'snipmate',
-""            \ 'python%790',
-""            \ 'snipmate-snippets',
-
-call ActivateAddons([
-            \ 'snipmate',
-            \ 'snipmate-snippets',
-            \ 'AutoComplPop',
-            \ 'EasyGrep',
-            \ 'fugitive',
-            \ 'pep83160',
-            \ 'pyflakes2441',
-            \ 'TaskList',
-            \ 'lusty',
-            \ 'The_NERD_tree',
-            \ 'Tagbar',
-            \ 'FuzzyFinder',
-            \ 'vimroom',
-            \ 'jslint', 
-            \ 'jQuery',
-            \ 'html5',
-            \ 'css_color@skammer',
-            \ 'delimitMate',
-            \ 'scratch',
-            \ 'utl',
-            \ 'molokai',
-            \ 'Powerline',
-            \ 'Buffergator',
-            \ ])
+source $HOME/.vim/bclose.vim
+source $HOME/.vim/config-thet-plugins
 
 colorscheme molokai
 ""colorscheme peaksea
 ""colorscheme wombat
-map <leader>pw :colorscheme wombat<CR>
-map <leader>pp :colorscheme peaksea<CR>
 
-"" indicate open/closing brackets
-set showmatch
+"" GUI
+if has('gui_running')
+    set antialias
+    " Remove all the UI cruft
+    set go-=T
+    set go-=l
+    set go-=L
+    set go-=r
+    set go-=R
+    set go-=M
+    set go-=m
+    highlight SpellBad term=underline gui=undercurl guisp=Orange
+    set fillchars+=vert:│ " Use a line-drawing char for pretty vertical splits.
+    set guicursor+=a:blinkon0 " Disable all blinking
+endif
+
+set showmatch " indicate open/closing brackets
 set ttyfast
+set nowrap
+set colorcolumn=79
+
+"" bufstop for xml based files
+autocmd BufRead,BufNewFile *.html,*.pt,*.xml,*.zcml setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+"" allow dot to enter command mode from normal mode
+noremap . :
+"" allow ctrl-backspace to generate escape key sequence
+inoremap <C-BS> <Esc>
+
+"" delete into blackhole register, so that other aren't overwritten
+"" thanks bairu from #vim!
+nnoremap <Del> "_x
+
+nmap <F5> :set nosmarttab<CR>
+"":setlocal si! si?<CR>
+""set noautoindent
+""set nocindent
+""set nosmarttab
+
+set foldlevelstart=20 " set foldlevel higher so opened buffers arent folded
+"" open/close all folds
+""nmap <C-TAB> za
+""nmap <C-S-TAB> zA
+nmap <C-S-Right> zo
+nmap <C-S-Left> zc
+"" termit might override usage of -A-
+nmap <C-S-A-Right> zO
+nmap <C-S-A-Left> zC
+
+" toggle list
+set nolist
+nnoremap <leader>p :set list!<CR> 
+
 "" wrap text
 nnoremap <leader>w gqip
+
 "" remap
 map <silent> <leader>r :set spell!<CR>
 nmap <leader>s :call Preserve("%s/\\s\\+$//e")<CR>
 
+"" MULTIPAGE
+"" see: http://stackoverflow.com/questions/6873076/auto-scrollable-pagination-with-vim-using-vertical-split
+nmap <silent> <Leader>ef :vsplit<bar>wincmd l<bar>exe "norm! Ljz<c-v><cr>"<cr>:set scb<cr>:wincmd h<cr> :set scb<cr>
+
+"" center scrolling
+map <S-Up> <Up>zz
+map <S-Down> <Down>zz
+" scoll lock toggle
+map <leader>zz :let &scrolloff=999-&scrolloff<cr>
+" center search
+nmap n nzz
+nmap N Nzz
+
+" select all
+nmap <C-a> ggVG
+
+"" next/previous buffer
+nmap <silent> <C-left> :bprev<CR>
+nmap <silent> <C-right> :bnext<CR>
+"" close buffer and goto next. works with TabBar
+""nmap <C-x> :bd<CR>:bnext<CR>
+"" Bclose script doesn't delete windows. Annoyance Free.
+nmap <C-x> :Bclose<CR>
+
+nmap <C-n> :tab split<CR>
+nmap <C-c> :tabclose<CR>
+nmap <C-Up> :tabn<CR>
+nmap <C-Down> :tabp<CR>
+
+"""" CLIPBOARD
+"" default copy/paste
+nmap 1 "ay
+nmap 11 "ayy
+nmap 2 "ap
+"" copy/paste paste to/from clipboard
+map <C-S-Y> "+yy
+map <C-S-P> "+P
+"" set clipboard=unnamed
+"" set clipboard=unnamedplus
+
+"""" PLUGINS
+
+"" lusty
+nnoremap <leader>, :LustyJuggler<CR>
+nnoremap <leader>m :LustyFilesystemExplorer<CR>
+nnoremap <leader>. :LustyFilesystemExplorerFromHere<CR>
+"" buffergator
+nnoremap <leader>/ :BuffergatorToggle<CR>
+
+"" Tagbar
+nnoremap tt :TagbarToggle<CR>
+
+"" Fuzzy Finder
+nmap <LEADER>f :FufFile<SPACE>**/<CR>
+nmap <LEADER>F :FufRenewCache<CR>
+"nmap <leader>t :FufCoverageFile<Space>
+"nmap <leader>ft :FufTag<Space>
+
+"" TaskList
+nmap <F11> :TaskList<CR>
+
+"" NERDTree
+noremap <silent> <f9> :NERDTreeToggle<CR>
+
+"" quit fast
+"nmap :qq<CR> :qall<CR>
+
+"" move lines and blocks
+"" see http://vim.wikia.com/wiki/Moving_lines_up_or_down
+"nnoremap <C-Up> :m+<CR>==
+"nnoremap <C-Down> :m-2<CR>==
+"inoremap <C-Up> <Esc>:m+<CR>==gi
+"inoremap <C-Down> <Esc>:m-2<CR>==gi
+"vnoremap <C-Up> :m'>+<CR>gv=gv
+"vnoremap <C-Down> :m-2<CR>gv=gv
+
+"" autocomplpopup bug
+"autocmd BufRead,BufNewFile *.tex,*.txt,*.rst setlocal tw=79 fo=aw2tq
+"autocmd BufRead,BufNewFile *.py setlocal tw=79 fo=aw2cq
 
 " Use ranger as vim file manager
 " http://ornicar.github.com/2011/02/12/ranger-as-vim-file-manager.html
@@ -90,7 +167,7 @@ function! Ranger()
     endif
     redraw!
 endfunction
-"nmap <leader>q :call Ranger()<cr>
+nmap <leader>q :call Ranger()<cr>
 
 "function! Ranger2()
 "    let tmp = /tmp/chosen
@@ -105,289 +182,12 @@ endfunction
 "nmap <leader>q :call Ranger2()<cr>
 
 
-"" garbas
-
-" }}}
-" Powerline {{{
-
-function! Addons_powerline ()
-    let g:Powerline_symbols = 'fancy'
-endfunction
-
-" Tagbar {{{2
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-nnoremap tt :TagbarToggle<CR>
-
-" ZCML type
-" XXX: This doesn't currently work because I use a filetype setting
-" of "xml.zcml".
-let g:tagbar_type_zcml = {
-    \ 'ctagstype': 'zcml',
-    \ 'kinds': [
-        \ 'n:name',
-        \ 'g:profile',
-        \ 'p:permission',
-        \ 'h:handler',
-        \ 'm:component',
-        \ 'f:factory',
-        \ 'c:class',
-        \ 'i:id',
-        \ 's:schema'
-    \ ]
-\}
-" cfg file type
-let g:tagbar_type_cfg = {
-    \ 'ctagstype': 'ini',
-    \ 'kinds': ['s:section']
-\ }
-" Markdown type
-let g:tagbar_type_markdown = {
-    \ 'ctagstype': 'markdown',
-    \ 'kinds': ['h:header']
-\ }
-
-"" buffergator
-let g:buffergator_viewport_split_policy = 'L'
-let g:buffergator_sort_regime = 'filepath'
-let g:buffergator_display_regime = 'basename'
-let g:buffergator_split_size = 40
-let g:buffergator_autodismiss_on_select = 0
-let g:buffergator_suppress_keymaps = 1
-nnoremap <leader>/ :BuffergatorToggle<CR>
-
-"" lusty
-nnoremap <leader>, :LustyJuggler<CR>
-nnoremap <leader>m :LustyFilesystemExplorer<CR>
-nnoremap <leader>. :LustyFilesystemExplorerFromHere<CR>
-
-
-" Fuzzy Finder {{{2
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-" max results, lot o' files in a buildout :)
-let g:fuzzy_ceiling=35000
-" show full paths
-let g:fuzzy_path_display = 'highlighted_path'
-" ignored files
-let g:fuzzy_ignore = "*.png;*.PNG;*.pyc;*.pyo;*.JPG;*.jpg;*.GIF;*.gif;.svn/**;.git/**;*.mo;.DS_Store;.AppleDouble"
-" available modes
-let g:FuzzyFinderOptions = {
-    \'File': {'mode_available': 1},
-    \'Buffer': {'mode_available': 0},
-    \'Dir': {'mode_available': 0},
-    \'MruFile': {'mode_available': 0},
-    \'MruCmd': {'mode_available': 0},
-    \'Bookmark': {'mode_available': 0},
-    \}
-" Don't delete a full path when using backspace in file mode
-let g:FuzzyFinderOptions.File.smart_bs = 0
-
-" Shortcuts for opening fuzzy finder
-nmap <LEADER>f :FufFile<SPACE>**/<CR>
-nmap <LEADER>F :FufRenewCache<CR>
-"nmap <leader>t :FufCoverageFile<Space>
-"nmap <leader>ft :FufTag<Space>
-
-" GUI {{{
-if has('gui_running')
-    set antialias
-
-    " Remove all the UI cruft
-    set go-=T
-    set go-=l
-    set go-=L
-    set go-=r
-    set go-=R
-    set go-=M
-    set go-=m
-    highlight SpellBad term=underline gui=undercurl guisp=Orange
-
-    " Use a line-drawing char for pretty vertical splits.
-    set fillchars+=vert:│
-
-    " Different cursors for different modes.
-    "set guicursor=n-c:block-Cursor-blinkon0
-    "set guicursor+=v:block-vCursor-blinkon0
-    "set guicursor+=i-ci:ver20-iCursor
-    " Disable all blinking:
-    set guicursor+=a:blinkon0
-" }}}
-endif
-
-
-"" THET
-set nowrap
-set colorcolumn=79
-
-"" MULTIPAGE
-"" see: http://stackoverflow.com/questions/6873076/auto-scrollable-pagination-with-vim-using-vertical-split
-nmap <silent> <Leader>ef :vsplit<bar>wincmd l<bar>exe "norm! Ljz<c-v><cr>"<cr>:set scb<cr>:wincmd h<cr> :set scb<cr>
-
-""" EASYGREP
-let g:EasyGrepMode=1
-let g:EasyGrepCommand=0
-let g:EasyGrepRecursive=0
-let g:EasyGrepIgnoreCase=1
-let g:EasyGrepHidden=0
-let g:EasyGrepAllOptionsInExplorer=1
-let g:EasyGrepWindow=1
-let g:EasyGrepReplaceWindowMode=0
-let g:EasyGrepOpenWindowOnMatch=1
-let g:EasyGrepEveryMatch=0
-let g:EasyGrepJumpToMatch=1
-let g:EasyGrepInvertWholeWord=0
-let g:EasyGrepFileAssociationsInExplorer=0
-let g:EasyGrepOptionPrefix='<leader>vy'
-let g:EasyGrepReplaceAllPerFile=0
-
-
-"" move lines and blocks
-"" see http://vim.wikia.com/wiki/Moving_lines_up_or_down
-"nnoremap <C-Up> :m+<CR>==
-"nnoremap <C-Down> :m-2<CR>==
-"inoremap <C-Up> <Esc>:m+<CR>==gi
-"inoremap <C-Down> <Esc>:m-2<CR>==gi
-"vnoremap <C-Up> :m'>+<CR>gv=gv
-"vnoremap <C-Down> :m-2<CR>gv=gv
-
-
-"" scroll up / down
-map <S-Up> <Up>zz
-map <S-Down> <Down>zz
-""inoremap <C-Up> <Esc><Up>zz<CR>==gi
-""inoremap <C-Down> <Esc><Down>zz<CR>==gi
-""vnoremap <C-Up> <Esc><Up>zz<CR>gv=gv
-""vnoremap <C-Down> <Esc><Down>zz<CR>gv=gv
-
-
-"" center search
-nmap n nzz
-nmap N Nzz
-
-
-""map <leader>h :TbToggle<CR>
-
-"" allow dot to enter command mode from normal mode
-noremap . :
-"" allow ctrl-enter to generate escape key sequence
-inoremap <C-BS> <Esc>
-""nmap ä i
-
-"" bufstop for xml based files
-autocmd BufRead,BufNewFile *.html,*.pt,*.xml,*.zcml setlocal tabstop=2 shiftwidth=2 softtabstop=2
-
-"" autocomplpopup bug
-""autocmd BufRead,BufNewFile *.tex,*.txt,*.rst setlocal tw=79 fo=aw2tq
-""autocmd BufRead,BufNewFile *.py setlocal tw=79 fo=aw2cq
-
-nmap <F5> :set nosmarttab<CR>
-"":setlocal si! si?<CR>
-""set noautoindent
-""set nocindent
-""set nosmarttab
-
-set foldlevelstart=20 "set foldlevel higher so opened buffers arent folded
-"" open/close all folds
-""nmap <C-TAB> za
-""nmap <C-S-TAB> zA
-nmap <C-S-Right> zo
-nmap <C-S-Left> zc
-"" termit overrides usage of -A-
-""nmap <C-S-A-Right> zO
-""nmap <C-S-A-Left> zC
-
-"" next/previous buffer
-nmap <silent> <C-left> :bprev<CR>
-nmap <silent> <C-right> :bnext<CR>
-"" close buffer and goto next. works with TabBar
-""nmap <C-x> :bd<CR>:bnext<CR>
-"" Bclose script doesn't delete windows. Annoyance Free.
-nmap <C-x> :Bclose<CR>
-
-nmap <C-n> :tab split<CR>
-nmap <C-Up> :tabn<CR>
-nmap <C-Down> :tabp<CR>
-nmap <C-c> :tabclose<CR>
-
-" select all
-nmap <C-a> ggVG
-
-"" default copy/paste
-nmap 1 "ay
-nmap 11 "ayy
-nmap 2 "ap
-"" copy/paste paste to/from clipboard
-map <C-S-Y> "+yy
-map <C-S-P> "+P
-
-""set clipboard=unnamed
-"" set clipboard=unnamedplus
-
-"" delete into blackhole register, so that other aren't overwritten
-"" thanks bairu from #vim!
-nnoremap <Del> "_x
-
-"""" TagList
-""nmap <f10> :TlistToggle<CR>
-"" TaskList
-nmap <F11> :TaskList<CR>
-
-"" quit fast
-"nmap :qq<CR> :qall<CR>
-
-"""" NERDTree
-noremap <silent> <f9> :NERDTreeToggle<CR>
-""noremap <silent> <f8> :NERDTreeFromBookmark<Space>
-""noremap <silent> <f7> :NERDTreeFind<CR>
-let g:NERDTreeIgnore=['\~$', '\.svn$', '\.git*$', '\.pyc$', '\.pyo$', '\.mo$']
-""" set the sort order to alphabetical
-let g:NERDTreeSortOrder=[]
-""" when the root is changed, change Vim's working dir
-""let NERDTreeChDirMode=2
-let g:NERDTreeChDirMode=0
-let g:NERDTreeHighlightCursorline=1
-let g:NERDTreeHijackNetrw=0
-let g:NERDTreeMouseMode=2
-let g:NERDTreeMinimalUI=1
-let g:NERDTreeWinSize=31
-
-
-
-"" list
-set nolist
-nnoremap <leader>p :set list!<CR>
-
-"" autocomplpopup
-""fun! GetSnipsInCurrentScope()
-""    let snips = {}
-""    for scope in [bufnr('%')] + split(&ft, '\.') + ['_']
-""        call extend(snips, get(s:snippets, scope, {}), 'keep')
-""        call extend(snips, get(s:multi_snips, scope, {}), 'keep')
-""    endfor
-""    return snips
-""endf
-""let g:acp_behaviorSnipmateLength=1
-
-"" autocomplete behavior
-"" http://vim.wikia.com/wiki/Improve_completion_popup_menu
-""inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-""inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-""inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-""inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-""inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
-""inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
-
 "" split windows
 "" http://techdebug.com/blog/2008/05/22/vim-split-tips/
-
-" scoll lock toggle
-map <leader>zz :let &scrolloff=999-&scrolloff<cr>
-
 " Max/unmax splits
-nnoremap <c-W>O :call MaximizeToggle()<cr>
 nnoremap <c-W>o :call MaximizeToggle()<cr>
-nnoremap <c-W><c-O> :call MaximizeToggle()<cr>
-
+"nnoremap <c-W>O :call MaximizeToggle()<cr>
+"nnoremap <c-W><c-O> :call MaximizeToggle()<cr>
 function! MaximizeToggle()
   if exists("s:maximize_session")
     exec "source " . s:maximize_session
@@ -403,19 +203,18 @@ function! MaximizeToggle()
     only
   endif
 endfunction
-
-nnoremap <C-w>a :call WindowToggle()<CR>
-function! WindowToggle()
-    "" toggle
-    let s:toggle_split = exists('s:toggle_split') ? !s:toggle_split : 1
-    if s:toggle_split
-        "" <C-w>w<CR>
-        echo 'implement me 1'
-    else
-        "" <C-p>p<CR>
-        echo 'imeplement me 2'
-    endif
-endfunction
+"nnoremap <C-w>a :call WindowToggle()<CR>
+"function! WindowToggle()
+"    "" toggle
+"    let s:toggle_split = exists('s:toggle_split') ? !s:toggle_split : 1
+"    if s:toggle_split
+"        "" <C-w>w<CR>
+"        echo 'implement me 1'
+"    else
+"        "" <C-p>p<CR>
+"        echo 'imeplement me 2'
+"    endif
+"endfunction
 
 
 "" vim:ft=vim
