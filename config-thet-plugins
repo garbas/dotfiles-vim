@@ -46,7 +46,7 @@ call ActivateAddons([
             \ 'scratch',
             \ 'snipmate',
             \ 'snipmate-snippets',
-            \ 'utl',
+"            \ 'utl',
             \ 'vimroom',
             \ ])
 
