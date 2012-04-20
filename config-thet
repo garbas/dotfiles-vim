@@ -34,11 +34,13 @@ set colorcolumn=79
 
 "" bufstop for xml based files
 autocmd BufRead,BufNewFile *.html,*.pt,*.xml,*.zcml setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd BufRead,BufNewFile *.js,*.css setlocal tabstop=4 shiftwidth=4 softtabstop=4
 
 "" allow dot to enter command mode from normal mode
-noremap . :
+noremap ; :
 "" allow ctrl-backspace to generate escape key sequence
 inoremap <C-BS> <Esc>
+command W execute "w"
 
 "" delete into blackhole register, so that other aren't overwritten
 "" thanks bairu from #vim!
