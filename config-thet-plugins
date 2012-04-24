@@ -34,6 +34,7 @@ call ActivateAddons([
             \ 'Tagbar',
             \ 'TaskList',
             \ 'The_NERD_tree',
+            \ 'Conque_Shell',
             \ 'css_color@skammer',
             \ 'delimitMate',
             \ 'fugitive',
@@ -145,6 +146,12 @@ let g:NERDTreeHijackNetrw=0
 let g:NERDTreeMouseMode=2
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeWinSize=31
+
+
+"" Conque_Shell
+let g:ConqueTerm_FastMode = 0
+let g:ConqueTerm_Color = 1
+let g:ConqueTerm_CloseOnEnd = 1
 
 
 "" autocomplpopup
