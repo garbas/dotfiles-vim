@@ -116,7 +116,7 @@ map <C-S-P> "+P
 """" PLUGINS
 
 "" open bash in vertical split
-nnoremap <leader>k :ConqueTermSplit bash<CR>
+nnoremap <leader>k :lcd %:p:h<CR>:ConqueTermSplit bash<CR>
 
 "" lusty
 nnoremap <leader>, :LustyJuggler<CR>
