@@ -25,6 +25,7 @@ if has('gui_running')
     highlight SpellBad term=underline gui=undercurl guisp=Orange
     set fillchars+=vert:│ " Use a line-drawing char for pretty vertical splits.
     set guicursor+=a:blinkon0 " Disable all blinking
+    set guifont=Ubuntu\ Mono\ 12
 endif
 
 set showmatch " indicate open/closing brackets
@@ -97,6 +98,7 @@ nmap <silent> <C-right> :bnext<CR>
 "" Bclose script doesn't delete windows. Annoyance Free.
 nmap <C-x> :Bclose<CR>
 
+"nmap <leader>t :tabnew
 nmap <C-n> :tab split<CR>
 nmap <C-c> :tabclose<CR>
 nmap <C-Up> :tabn<CR>
@@ -115,15 +117,21 @@ map <C-S-P> "+P
 
 """" PLUGINS
 
+"" fontsize
+nmap <silent> <leader>9 <Plug>FontsizeBegin
+nmap <silent> <leader>= <Plug>FontsizeInc
+nmap <silent> <leader>- <Plug>FontsizeDec
+nmap <silent> <leader>0 <Plug>FontsizeDefault
+
 "" open bash in vertical split
 nnoremap <leader>k :lcd %:p:h<CR>:ConqueTermSplit bash<CR>
 
 "" lusty
 nnoremap <leader>, :LustyJuggler<CR>
-nnoremap <leader>m :LustyFilesystemExplorer<CR>
+nnoremap <leader>/ :LustyFilesystemExplorer<CR>
 nnoremap <leader>. :LustyFilesystemExplorerFromHere<CR>
 "" buffergator
-nnoremap <leader>/ :BuffergatorToggle<CR>
+nnoremap <leader>m :BuffergatorToggle<CR>
 
 "" Tagbar
 nnoremap tt :TagbarToggle<CR>
