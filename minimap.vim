@@ -1,3 +1,8 @@
+" https://gist.github.com/1470884
+" https://gist.github.com/1471147
+" https://gist.github.com/2424873
+"" last/newest one is used here
+
 function! ToggleMinimap()
 
     if exists("s:isMini") && s:isMini == 0
@@ -19,7 +24,7 @@ function! ToggleMinimap()
         exe "set lines=" . l
 
         " make font small
-        set guifont=ProggyTinyTT:h1
+        set guifont=Ubuntu\ Mono\ 6
 
         exe 'normal zR'
 
@@ -45,7 +50,7 @@ function! ToggleMinimap()
 
     else
 
-        set guifont=Anonymous\ Pro:h14
+        set guifont=Ubuntu\ Mono\ 12
         hi clear Visible
         set nocursorline
         set antialias

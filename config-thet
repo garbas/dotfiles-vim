@@ -5,6 +5,7 @@ source $HOME/.vim/config-common
 source $HOME/.vim/config-textmate-like
 source $HOME/.vim/config-comment-inout
 source $HOME/.vim/bclose.vim
+"source $HOME/.vim/minimap.vim
 source $HOME/.vim/config-thet-plugins
 
 colorscheme molokai
