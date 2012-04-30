@@ -23,7 +23,7 @@ if has('gui_running')
     set go-=R
     set go-=M
     set go-=m
-    highlight SpellBad term=underline gui=undercurl guisp=Orange
+    highlight SpellBad term=underline gui=undercurl guisp=Red
     set fillchars+=vert:│ " Use a line-drawing char for pretty vertical splits.
     set guicursor+=a:blinkon0 " Disable all blinking
     set guifont=Ubuntu\ Mono\ 12
@@ -72,6 +72,7 @@ nnoremap <leader>p :set list!<CR>
 nnoremap <leader>w gqip
 
 "" remap
+set spelllang=de,en
 map <silent> <leader>r :set spell!<CR>
 nmap <leader>s :call Preserve("%s/\\s\\+$//e")<CR>
 
