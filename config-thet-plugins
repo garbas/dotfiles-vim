@@ -24,35 +24,40 @@ source $HOME/.vim/config-vam
 " utl
 " vim-less
 " vimroom: http://projects.mikewest.org/vimroom/
+"            \ 'lint', 
 
 call ActivateAddons([
-            \ 'AutoComplPop',
-            \ 'Buffergator',
-            \ 'EasyGrep',
-            \ 'FuzzyFinder',
-            \ 'Powerline',
-            \ 'Tagbar',
-            \ 'TaskList',
-            \ 'The_NERD_tree',
-            \ 'Conque_Shell',
-            \ 'css_color@skammer',
-            \ 'delimitMate',
-            \ 'fontsize',
-            \ 'fugitive',
-            \ 'html5',
-            \ 'jQuery',
-            \ 'jslint', 
-            \ 'lusty',
-            \ 'molokai',
-            \ 'pep83160',
-            \ 'pyflakes2441',
-            \ 'scratch',
-            \ 'snipmate',
-            \ 'snipmate-snippets',
-            \ 'vimroom',
-            \ 'VOoM',
-            \ ])
+    \ 'AutoComplPop',
+    \ 'Buffergator',
+    \ 'EasyGrep',
+    \ 'FuzzyFinder',
+    \ 'Powerline',
+    \ 'Tagbar',
+    \ 'TaskList',
+    \ 'The_NERD_tree',
+    \ 'Conque_Shell',
+    \ 'css_color@skammer',
+    \ 'delimitMate',
+    \ 'fontsize',
+    \ 'fugitive',
+    \ 'html5',
+    \ 'jQuery',
+    \ 'lusty',
+    \ 'molokai',
+    \ 'pep83160',
+    \ 'pyflakes2441',
+    \ 'scratch',
+    \ 'snipmate',
+    \ 'snipmate-snippets',
+    \ 'Syntastic',
+    \ 'vimroom',
+    \ 'VOoM',
+    \ ])
 
+
+let g:syntastic_check_on_open=1
+let g:syntastic_auto_jump=0
+let g:syntastic_stl_format = '[%E{%e Errors}%B{, }%W{%w Warnings}]'
 
 "" buffergator
 let g:buffergator_viewport_split_policy = 'L'

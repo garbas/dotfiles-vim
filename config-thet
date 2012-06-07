@@ -43,10 +43,16 @@ noremap ; :
 "" allow ctrl-backspace to generate escape key sequence
 inoremap <C-BS> <Esc>
 command W execute "w"
+command Wa execute "wa"
 
 "" delete into blackhole register, so that other aren't overwritten
 "" thanks bairu from #vim!
 nnoremap <Del> "_x
+
+nnoremap <leader><Up> <C-w>k
+nnoremap <leader><Down> <C-w>j
+nnoremap <leader><Left> <C-w>h
+nnoremap <leader><Right> <C-w>l
 
 nmap <F5> :set nosmarttab<CR>
 "":setlocal si! si?<CR>
@@ -61,8 +67,8 @@ set foldlevelstart=20 " set foldlevel higher so opened buffers arent folded
 nmap <C-S-Right> zo
 nmap <C-S-Left> zc
 "" termit might override usage of -A-
-nmap <C-S-A-Right> zO
-nmap <C-S-A-Left> zC
+""nmap <C-S-A-Right> zO
+""nmap <C-S-A-Left> zC
 
 " toggle list
 set nolist
