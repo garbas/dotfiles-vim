@@ -72,7 +72,11 @@ nmap <C-S-Left> zc
 
 " toggle list
 set nolist
-nnoremap <leader>p :set list!<CR> 
+nunmap <leader>l
+noremap <leader>p :set list!<CR>
+unmap <silent> <leader>n
+map <silent> <leader>l :set number!<CR>  " shortcut to turn off line numbers¬
+
 
 "" wrap text
 nnoremap <leader>w gqip
@@ -87,9 +91,9 @@ nmap <leader>s :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <silent> <Leader>ef :vsplit<bar>wincmd l<bar>exe "norm! Ljz<c-v><cr>"<cr>:set scb<cr>:wincmd h<cr> :set scb<cr>
 
 "" center scrolling
-map <S-Up> <Up>zz
-map <S-Down> <Down>zz
-" scoll lock toggle
+"map <S-Up> <Up>zz
+"map <S-Down> <Down>zz
+"" scoll lock toggle
 map <leader>zz :let &scrolloff=999-&scrolloff<cr>
 " center search
 nmap n nzz
@@ -132,7 +136,7 @@ nmap <silent> <leader>- <Plug>FontsizeDec
 nmap <silent> <leader>0 <Plug>FontsizeDefault
 
 "" open bash in vertical split
-nnoremap <leader>k :lcd %:p:h<CR>:ConqueTermSplit bash<CR>
+nnoremap <leader>c :lcd %:p:h<CR>:ConqueTermSplit bash<CR>
 
 "" lusty
 nnoremap <leader>, :LustyJuggler<CR>
@@ -155,6 +159,20 @@ nmap <F11> :TaskList<CR>
 
 "" NERDTree
 noremap <silent> <f9> :NERDTreeToggle<CR>
+map <leader>nm :NERDTree<CR>
+map <leader>nn :NERDTreeToggle<CR>
+map <leader>nf :NERDTreeFind<CR>
+map <leader>nx :NERDTreeClose<CR>
+
+
+
+
+
+
+
+
+
+
 
 "" quit fast
 "nmap :qq<CR> :qall<CR>
@@ -206,7 +224,7 @@ nmap <leader>q :call Ranger()<cr>
 "" split windows
 "" http://techdebug.com/blog/2008/05/22/vim-split-tips/
 " Max/unmax splits
-nnoremap <c-W>o :call MaximizeToggle()<cr>
+nnoremap <leader>d :call MaximizeToggle()<cr>
 "nnoremap <c-W>O :call MaximizeToggle()<cr>
 "nnoremap <c-W><c-O> :call MaximizeToggle()<cr>
 function! MaximizeToggle()
@@ -237,5 +255,9 @@ endfunction
 "    endif
 "endfunction
 
+"" TILE ALL OPEN BUFFERS
+"" http://www.vimbits.com/bits/375
+" open all buffers in separate (vertical) panes (see ':help :ball' and ':help :vertical')
+noremap <silent> <leader>a :vertical :ball<cr>
 
 "" vim:ft=vim
