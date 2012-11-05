@@ -32,6 +32,8 @@ endif
 set showmatch " indicate open/closing brackets
 set ttyfast
 set nowrap
+set nolist "" nolist needed for linebreak
+set linebreak "" when wrapping, don't break words
 set colorcolumn=79
 
 "" bufstop for xml based files
@@ -80,6 +82,10 @@ map <silent> <leader>l :set number!<CR>  " shortcut to turn off line numbers¬
 
 "" wrap text
 nnoremap <leader>w gqip
+
+"" join text in paragraph
+"" http://tech.groups.yahoo.com/group/vim/message/126388
+nnoremap <leader>j vipJ^
 
 "" remap
 set spelllang=de,en
