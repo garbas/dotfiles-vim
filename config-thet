@@ -116,8 +116,10 @@ nmap <silent> <C-right> :bnext<CR>
 "" Bclose script doesn't delete windows. Annoyance Free.
 nmap <C-x> :Bclose<CR>
 
+
+nmap <C-n> :tabnew<CR>
 "nmap <leader>t :tabnew
-nmap <C-n> :tab split<CR>
+"nmap <C-n> :tab split<CR>
 nmap <C-c> :tabclose<CR>
 nmap <C-Up> :tabn<CR>
 nmap <C-Down> :tabp<CR>
